@@ -125,7 +125,13 @@
 	}
 
 	&__cards {
+		display: block;
 		margin: 0 auto;
+		width: 1204px;
+
+		@include media(md) {
+			width: 100%;
+		}
 	}
 }
 
@@ -150,13 +156,12 @@
 .cards {
 	display: flex;
 	flex-wrap: wrap;
-	width: 1204px;
 
 	@include media(md) {
 		display: flex;
 		flex-wrap: nowrap;
-		width: 100%;
 		overflow-x: auto;
+		overflow-y: hidden;
 		padding-left: 24px;
 	}
 

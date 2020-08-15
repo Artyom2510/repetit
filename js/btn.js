@@ -41,13 +41,16 @@ $(function () {
 
 	btnGlitch = new glitchTimeline();
 
-	$('.btn-glitch').on({
+	$('.js-btn-glitch').on({
 		mouseenter: function () {
-			$(this).addClass('btn-glitch_active');
-			btnGlitch.start();
+			if (!$(this).hasClass('btn_disable')) {
+				console.log('ll')
+				$(this).addClass('btn_hovered');
+				btnGlitch.start();
+			}
 		},
 		mouseleave: function () {
-			$(this).removeClass('btn-glitch_active');
+			$(this).removeClass('btn_hovered');
 			btnGlitch.stop();
 		}
 	});

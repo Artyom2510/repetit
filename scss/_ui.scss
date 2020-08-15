@@ -107,7 +107,7 @@ ul, ol {
 	padding: 0;
 	border: none;
 	opacity: 1;
-	// background-color: transparent;
+	background-color: transparent;
 	box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.5);
 	transition: opacity .2s ease;
 
@@ -115,27 +115,6 @@ ul, ol {
 		width: 209px;
 		height: 54px;
 	}
-
-	// &::before,
-	// &:after {
-	// 	content: '';
-	// 	position: absolute;
-	// 	top: 0;
-	// 	left: 0;
-	// 	display: block;
-	// 	width: 100%;
-	// 	height: 100%;
-	// }
-
-	// &:before {
-	// 	background-color: $green;
-	// 	z-index: -1;
-	// }
-
-	// &::after {
-	// 	background: $red;
-	// 	z-index: -2;
-	// }
 
 	&__text {
 		position: relative;
@@ -146,7 +125,6 @@ ul, ol {
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		// background-color: $white;
 		color: $black;
 		font-family: "RobotoMono", sans-serif;
 		font-size: 20px;
@@ -163,38 +141,59 @@ ul, ol {
 		z-index: 2;
 		left: 0;
 		width: 100%;
-		height: 16px;
+		height: 25%;
 		background-color: $white;
-
-		&:nth-of-type(2n) {
-			box-shadow: 1px -1px 1px $red, -1px 1px 1px $green,;
-		}
-
-		&:nth-of-type(2n + 1) {
-			box-shadow: 1px -1px 1px $green, -1px 1px 1px $red;
-		}
+		transition: box-shadow .2s ease;
 
 		@for $i from 1 through 4 {
 			&:nth-of-type(#{$i}) {
-				top: 16px * $i - 16px;
+				top: 25% * $i - 25%;
 			}
 		}
 	}
 
 	&:hover,
 	&:focus {
-		#{$p}__text {
-			animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-		}
-
 		#{$p}__rectangle {
 			&:nth-of-type(2n) {
+				box-shadow: 1px 0 0 $red, -1px 0 0 $green,;
 				animation: glitch-new 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
 			}
 
 			&:nth-of-type(2n + 1) {
+				box-shadow: 1px 0 0 $green, -1px 0 0 $red;
 				animation: glitch-new 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite reverse;
 			}
+		}
+	}
+
+	&_hovered {
+		transform: translateZ(0);
+		overflow: visible;
+		-webkit-filter: url('#filter');
+		filter: url('#filter');
+
+		&::after,
+		&::before {
+			content: '';
+			width: 1px;
+			position: absolute;
+			top: -1px;
+			bottom: -1px;
+		}
+	
+		&::after {
+			left: -2px;
+			background-color: $red;
+			animation: colorshift-1 3s infinite;
+			animation-timing-function: step-end;
+		}
+	
+		&::before {
+			right: -2px;
+			background-color: $blue;
+			animation: colorshift-2 3s infinite;
+			animation-timing-function: step-end;
 		}
 	}
 
@@ -202,66 +201,76 @@ ul, ol {
 		opacity: .5;
 		cursor: not-allowed;
 		box-shadow: none;
-		animation: glitch2 1s ease-in infinite alternate;
+
+		#{$p}__text {
+			&:before,
+			&::after {
+				content: 'Послать сигнал';
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				line-height: 50px;
+				width: 100%;
+				height: 100%;
+				opacity: .8;
+			}
+
+			&::before {
+				z-index: -2;
+				animation: glitch3 .5s ease-in infinite;
+				color: $red;
+			}
+
+			&::after {
+				z-index: -1;
+				animation: skew .5s ease-in infinite;
+				color: $green;
+			}
+		}
 
 		&:hover,
 		&:focus {
 			#{$p}__text,
+			#{$p}__rectangle,
 			&::before,
 			&::after {
-				animation: none;
-			}
-
-			#{$p}__text {
-				&:before,
-				&::after {
-					content: 'Послать сигнал';
-					position: absolute;
-					top: 0;
-					left: 0;
-					display: block;
-					line-height: 50px;
-					width: 100%;
-					height: 100%;
-					opacity: .8;
-				}
-
-				&::before {
-					z-index: -2;
-					animation: glitch3 .5s ease-in infinite;
-					color: $red;
-				}
-
-				&::after {
-					z-index: -1;
-					animation: skew .5s ease-in infinite;
-					color: $green;
-				}
+				box-shadow: none !important;
+				animation: none !important;
 			}
 		}
 	}
 }
 
-@keyframes glitch {
-	0%,
-	100% {
-		transform: translate(0);
+@keyframes colorshift-1 {
+	0%, 7% {
+		background-color: $red;
 	}
-
-	20% {
-		transform: translate(-2px, 2px);
+	8%, 18% {
+		background-color: transparent;
 	}
-
-	40% {
-		transform: translate(-2px, -2px);
+	19% {
+		background-color: $green;
+		width: 2px;
 	}
-
-	60% {
-		transform: translate(2px, 2px);
+	23%, 100% {
+		background-color: transparent;
 	}
+}
 
-	80% {
-		transform: translate(2px, -2px);
+@keyframes colorshift-2 {
+	0%, 7% {
+		background-color: $blue;
+	}
+	8%, 18% {
+		background-color: transparent;
+	}
+	19% {
+		background-color: $orange;
+		width: 2px;
+	}
+	23%, 100% {
+		background-color: transparent;
 	}
 }
 
@@ -291,16 +300,16 @@ ul, ol {
 		transform: skew(-1deg, 0deg);
 	}
 	61% {
-		transform: skew(2deg, -2deg);
+		transform: skew(1deg, -1deg);
 	}
 	62% {
-		transform: skew(-1deg, -2deg);
+		transform: skew(-1deg, -1deg);
 	}
 	65% {
-		transform: skew(2deg, -1deg);
+		transform: skew(1deg, -1deg);
 	}
 	70% {
-		transform: skew(-2deg);
+		transform: skew(-1deg);
 	}
 	74% {
 		transform: skew(1deg, -1deg);

@@ -53,7 +53,7 @@
 					задачка? Вы готовы вместе с нами ломать голову над решением такой задачки? Мы ждем ваш сигнал.</p>
 				<span></span>
 			</div>
-			<button class="main__btn btn btn-glitch js-tgl-signal">
+			<button class="main__btn btn js-btn-glitch js-tgl-signal">
 				<span class="btn__rectangle"></span>
 				<span class="btn__rectangle"></span>
 				<span class="btn__rectangle"></span>
@@ -63,56 +63,58 @@
 			<!-- <button class="main__btn btn js-tgl-signal">
 				<span class="btn__text">Послать сигнал</span>
 			</button> -->
-			<ul class="main__cards cards">
-				<li class="cards__item">
-					<button class="card js-tgl-vacancy" data-link="/">
-						<img src="icons/cards/job1.svg" alt="" class="card__prev">
-						<span class="card__prof">Руководитель отдела Директ / Ads</span>
-					</button>
-				</li>
-				<li class="cards__item">
-					<button class="card js-tgl-vacancy" data-link="/">
-						<img src="icons/cards/job2.svg" alt="" class="card__prev">
-						<span class="card__prof">Специалист по контекстной рекламе</span>
-					</button>
-				</li>
-				<li class="cards__item">
-					<button class="card js-tgl-vacancy" data-link="/">
-						<img src="icons/cards/job3.svg" alt="" class="card__prev">
-						<span class="card__prof">Менеджер по продукту</span>
-					</button>
-				</li>
-				<li class="cards__item">
-					<button class="card js-tgl-vacancy" data-link="/">
-						<img src="icons/cards/job4.svg" alt="" class="card__prev">
-						<span class="card__prof">Продуктовый / маркетинговый аналитик</span>
-					</button>
-				</li>
-				<li class="cards__item">
-					<button class="card js-tgl-vacancy" data-link="/">
-						<img src="icons/cards/job5.svg" alt="" class="card__prev">
-						<span class="card__prof">Маркетолог онлайн-продукта</span>
-					</button>
-				</li>
-				<li class="cards__item">
-					<button class="card js-tgl-vacancy" data-link="/">
-						<img src="icons/cards/job6.svg" alt="" class="card__prev">
-						<span class="card__prof">Тестировщик</span>
-					</button>
-				</li>
-				<li class="cards__item">
-					<button class="card js-tgl-vacancy" data-link="/">
-						<img src="icons/cards/job7.svg" alt="" class="card__prev">
-						<span class="card__prof">Бэк-эндер</span>
-					</button>
-				</li>
-				<li class="cards__item">
-					<button class="card js-tgl-vacancy" data-link="/">
-						<img src="icons/cards/job8.svg" alt="" class="card__prev">
-						<span class="card__prof">Фронт-эндер</span>
-					</button>
-				</li>
-			</ul>
+			<div class="main__cards">
+				<ul class="cards">
+					<li class="cards__item">
+						<button class="card js-tgl-vacancy" data-link="/">
+							<img src="icons/cards/job1.svg" alt="" class="card__prev">
+							<span class="card__prof">Руководитель отдела Директ / Ads</span>
+						</button>
+					</li>
+					<li class="cards__item">
+						<button class="card js-tgl-vacancy" data-link="/">
+							<img src="icons/cards/job2.svg" alt="" class="card__prev">
+							<span class="card__prof">Специалист по контекстной рекламе</span>
+						</button>
+					</li>
+					<li class="cards__item">
+						<button class="card js-tgl-vacancy" data-link="/">
+							<img src="icons/cards/job3.svg" alt="" class="card__prev">
+							<span class="card__prof">Менеджер по продукту</span>
+						</button>
+					</li>
+					<li class="cards__item">
+						<button class="card js-tgl-vacancy" data-link="/">
+							<img src="icons/cards/job4.svg" alt="" class="card__prev">
+							<span class="card__prof">Продуктовый / маркетинговый аналитик</span>
+						</button>
+					</li>
+					<li class="cards__item">
+						<button class="card js-tgl-vacancy" data-link="/">
+							<img src="icons/cards/job5.svg" alt="" class="card__prev">
+							<span class="card__prof">Маркетолог онлайн-продукта</span>
+						</button>
+					</li>
+					<li class="cards__item">
+						<button class="card js-tgl-vacancy" data-link="/">
+							<img src="icons/cards/job6.svg" alt="" class="card__prev">
+							<span class="card__prof">Тестировщик</span>
+						</button>
+					</li>
+					<li class="cards__item">
+						<button class="card js-tgl-vacancy" data-link="/">
+							<img src="icons/cards/job7.svg" alt="" class="card__prev">
+							<span class="card__prof">Бэк-эндер</span>
+						</button>
+					</li>
+					<li class="cards__item">
+						<button class="card js-tgl-vacancy" data-link="/">
+							<img src="icons/cards/job8.svg" alt="" class="card__prev">
+							<span class="card__prof">Фронт-эндер</span>
+						</button>
+					</li>
+				</ul>
+			</div>
 		</main>
 
 		<footer class="footer">
@@ -226,7 +228,14 @@
 						</div>
 						<span class="file-block__error js-error-upload"></span>
 					</div>
-					<button class="form__send btn js-submit" type="submit" tabindex="6">
+					<!-- <button class="form__send btn js-submit" type="submit" tabindex="6">
+						<span class="btn__text">Послать сигнал</span>
+					</button> -->
+					<button class="form__send btn js-submit js-btn-glitch" type="submit" tabindex="6">
+						<span class="btn__rectangle"></span>
+						<span class="btn__rectangle"></span>
+						<span class="btn__rectangle"></span>
+						<span class="btn__rectangle"></span>
 						<span class="btn__text">Послать сигнал</span>
 					</button>
 				</form>
@@ -266,46 +275,18 @@
 					<li>Доступ к разработке.</li>
 				</ul>
 			</div>
-			<button class="popup__btn btn js-go-to-form">
+			<button class="popup__btn btn js-go-to-form js-btn-glitch">
+				<span class="btn__rectangle"></span>
+				<span class="btn__rectangle"></span>
+				<span class="btn__rectangle"></span>
+				<span class="btn__rectangle"></span>
 				<span class="btn__text">Послать сигнал</span>
 			</button>
+			<!-- <button class="popup__btn btn js-go-to-form">
+				<span class="btn__text">Послать сигнал</span>
+			</button> -->
 		</div>
 	</div>
-	<!-- <div class="popup js-popup-vacancy">
-		<div class="popup__bg js-tgl-vacancy"></div>
-		<div class="popup__wrap popup__wrap_vacancy">
-			<button type="button" class="popup__close js-tgl-vacancy">
-				<img src="icons/close.svg" alt="" class="img-svg">
-			</button>
-			<h2 class="popup__title">Руководитель отдела Директ / Ads</h2>
-			<div class="popup__content b-content">
-				<p>Поисковый контекст — один из ключевых каналов привлечения заявок для нас. В нем мы ежегодно растем и местами, пожалуй, превосходим по уровню развития всех конкурентов. Тем не менее наш подход по-прежнему остается любительским.</p>
-				<p>Мы ищем человека, который перенесет наше продвижение в поисковом контексте и других каналах Директ/Ads на профессиональный уровень — построит процессы и команду, внедрит необходимые инструменты, обеспечит стабильный рост числа лидов.</p>
-				<p>Мы ищем очень важного человека для всей компании. Перспективы → Руководитель интернет-маркетинга.</p>
-			</div>
-			<div class="popup__content b-content">
-				<h3>Задачи:</h3>
-				<ul>
-					<li>Внедрение новых / реформирование текущих систем маркетинговой аналитики и управления ставками.</li>
-					<li>В поисковом контексте построение процесса непрерывного расширения семядра и запуска новых кампаний, повышения эффективности и переработки существующих кампаний. Построение процесса непрерывного тестирования новых каналов / механик продвижения в Директе/Ads помимо поискового контекста.</li>
-					<li>Накопление и структурирование компетенций и опыта внутри компании. Изучение и тестирование инноваций и лучших практик в отрасли.</li>
-				</ul>
-			</div>
-			<div class="popup__content b-content">
-				<h3>Ресурсы:</h3>
-				<ul>
-					<li>Бюджет Х0 000 000 рублей в год.</li>
-					<li>1 специалист по поисковому контексте. Готовы взять еще.</li>
-					<li>Многолетняя статистика кампаний и накопленный опыт.</li>
-					<li>Прямая поддержка директором по маркетингу.</li>
-					<li>Доступ к разработке.</li>
-				</ul>
-			</div>
-			<button class="popup__btn btn js-go-to-form">
-				<span class="btn__text">Послать сигнал</span>
-			</button>
-		</div>
-	</div> -->
 	<!--  -->
 
 	<svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
