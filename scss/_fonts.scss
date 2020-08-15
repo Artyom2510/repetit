@@ -1,0 +1,9 @@
+@include font-face("PressStart2P", "#{$url-font}/PressStart2P", "ttf") {
+	font-weight: 400;
+}
+@include font-face("RobotoMono", "#{$url-font}/RobotoMono", "ttf") {
+	font-weight: 500;
+}
+@include font-face("RobotoMono-Regular", "#{$url-font}/RobotoMono-Regular", "ttf") {
+	font-weight: 400;
+}

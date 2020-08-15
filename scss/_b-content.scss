@@ -1,0 +1,58 @@
+.b-content {
+
+	*:last-child {
+		margin-bottom: 0;
+	}
+
+	h3 {
+		display: block;
+		margin: 0 0 10px;
+		font-family: "PressStart2P", sans-serif;
+		font-size: 14px;
+		line-height: 22px;
+		letter-spacing: 0.21px;
+		color: $green;
+	}
+
+	p {
+		display: block;
+		margin: 0 0 24px;
+		font-family: "RobotoMono", sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+		font-weight: 500;
+		color: rgba($white, .8);
+	}
+
+	ul {
+		display: block;
+
+		li {
+			position: relative;
+			display: block;
+			margin: 0;
+			text-indent: 20px;
+			font-family: "RobotoMono", sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			font-weight: 500;
+			color: rgba($white, .8);
+
+			&::before {
+				content: '-';
+				position: absolute;
+				z-index: 1;
+				left: 0;
+				left: -20px;
+				top: 0;
+				display: block;
+				width: 10px;
+				font-family: "RobotoMono", sans-serif;
+				font-size: 16px;
+				line-height: 1.5;
+				font-weight: 500;
+				color: rgba($white, .8);
+			}
+		}
+	}
+}

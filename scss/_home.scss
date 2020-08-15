@@ -1,0 +1,268 @@
+.main {
+	position: relative;
+	display: block;
+	padding-top: 4.81vh;
+	// padding-top: 52px;
+	padding-bottom: 5.19vh;
+	// padding-bottom: 56px;
+
+	@include media(md) {
+		padding-top: 8vh;
+		padding-bottom: 9.5vh;
+	}
+
+	@include media(sm) {
+		padding-top: 8.3vh;
+		padding-bottom: 10.16vh;
+	}
+
+	@include media(xs) {
+		padding-top: 5.55vh;
+		padding-bottom: 6.75vh;
+	}
+
+	@include media(xxs) {
+		padding-bottom: 5vh;
+	}
+
+	&__title {
+		position: relative;
+		// margin-bottom: 52px;
+		margin-bottom: 4.81vh;
+
+		img {
+			position: absolute;
+			top: -42px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: block;
+			width: 57.6vw;
+			min-width: 1000px;
+			height: auto;
+
+			@include media(xs) {
+				top: -6.3vh;
+				min-width: 100%;
+			}
+		}
+
+		@include media(md) {
+			margin-bottom: 6.64vh;
+		}
+
+		@include media(xs) {
+			margin-bottom: 4.95vh;
+		}
+	}
+
+	&__desc {
+		position: relative;
+		display: block;
+		width: 100%;
+		// margin: 0 0 48px;
+		margin: 0 0 4.44vh;
+		padding: 9px 36px 8px;
+		overflow: hidden;
+		background-color: $orange;
+		border: 1px solid $orange;
+		outline: 1px solid $black;
+		outline-offset: -2px;
+
+		@include media(md) {
+			margin: 0 0 8.01vh;
+		}
+
+		@include media(xs) {
+			margin-bottom: 6.3vh;
+		}
+
+		p {
+			position: relative;
+			z-index: 1;
+			display: inline-block;
+			font-family: "PressStart2P", sans-serif;
+			font-size: 16px;
+			line-height: 1;
+			font-weight: 400;
+			white-space: nowrap;
+			color: $black;
+			opacity: 0;
+
+			&.marquee-anim {
+				animation: marquee 45s infinite linear;
+			}
+		}
+
+		span {
+			position: absolute;
+			z-index: 0;
+			left: 2px;
+			top: 2px;
+			z-index: 0;
+			width: calc(100% - 4px);
+			height: calc(100% - 4px);
+			background: url('#{$url-img}/bg-marquee.svg') repeat 0 0 $orange;
+		}
+	}
+
+	&__btn {
+		width: 265px;
+		height: 64px;
+		// margin-bottom: 48px;
+		margin: 0 auto 4.44vh;
+
+		@include media(md) {
+			margin-bottom: 8.79vh;
+		}
+
+		@include media(xs) {
+			margin-bottom: 7.35vh;
+		}
+
+		@include media(xxs) {
+			margin-bottom: 6vh;
+		}
+	}
+
+	&__cards {
+		margin: 0 auto;
+	}
+}
+
+@keyframes marquee {
+	0% {
+		opacity: 0;
+		transform: translateX(100vw);
+	}
+	2% {
+		opacity: 1;
+	}
+	98% {
+		opacity: 1;
+		transform: translateX(-100%);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+}
+
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	width: 1204px;
+
+	@include media(md) {
+		display: flex;
+		flex-wrap: nowrap;
+		width: 100%;
+		overflow-x: auto;
+		padding-left: 24px;
+	}
+
+	&__item {
+		display: block;
+		width: calc(25% - 30px);
+		// margin-bottom: 24px;
+		margin-bottom: 2.22vh;
+		margin-right: 40px;
+		outline: none !important;
+
+		@include media(md) {
+			min-width: 272px;
+			margin-right: 0;
+			margin-bottom: 0;
+			padding-right: 16px;
+		}
+
+		@include media(xs) {
+			padding-right: 10px;
+		}
+
+		&:nth-child(4n) {
+			margin-right: 0;
+
+			@include media(md) {
+				padding-right: 16px;
+			}
+
+			@include media(xs) {
+				padding-right: 10px;
+			}
+		}
+
+		&:nth-child(n + 5) {
+			margin-bottom: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+
+			@include media(md) {
+				padding-right: 24px;
+			}
+		}
+	}
+}
+
+.card {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 90px;
+	padding: 15px 32px 20px 28px;
+	background-color: #161b2f;
+	border: solid 1px transparent;
+	text-decoration: none;
+	border-image-source: linear-gradient(to bottom right, $green, $black);
+	border-image-slice: 1;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $white;
+		text-decoration: none;
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: 1;
+		display: block;
+		width: 27px;
+		height: 27px;
+	}
+
+	&::before {
+		bottom: 0;
+		left: 0;
+		transform: translate(-2px, 2px);
+		background-image: linear-gradient(45deg, #000a14, #000a14 16px, $green 16px, $green 17px, transparent 0);
+	}
+
+	&::after {
+		top: 0;
+		right: 0;
+		transform: translate(2px, -2px);
+		background-image: linear-gradient(225deg, #000a14, #000a14 16px, $green 16px, $green 17px, transparent 0);
+	}
+	
+	&__prev {
+		display: block;
+		margin-right: 20px;
+		width: 56px;
+		height: 56px;
+	}
+
+	&__prof {
+		display: block;
+		font-family: "RobotoMono", sans-serif;
+		font-size: 14px;
+		line-height: 18px;
+		font-weight: 500;
+		color: $white;
+		text-align: left;
+	}
+}

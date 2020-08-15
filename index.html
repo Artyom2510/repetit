@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Repetit</title>
+	<meta name="description" content="">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- <meta property="og:image" content="path/to/image.jpg"> -->
+	<meta name="application-name" content="Repetit">
+
+	<!-- <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon/favicon.ico">
+	<link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="img/favicon/mstile-144x144.png" sizes="144x144">
+	<link rel="manifest" href="img/favicon/site.webmanifest">
+	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#ee0e33">
+	<meta name="msapplication-config" content="img/favicon/browserconfig.xml"> -->
+
+	<link rel="stylesheet" href="css/main.css">
+
+	<script src="js/libs/jquery-3.4.1.min.js"></script>
+	<script src="js/libs/jquery.switchPopup.js"></script>
+	<script src="js/libs/jquery.inputmask.bundle.min.js"></script>
+	<script src="js/libs/tween-max.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/scroll-width.js"></script>
+	<script src="js/btn.js"></script>
+	<script src="js/canvas.js"></script>
+
+</head>
+
+<body>
+
+	<div class="root">
+		<!-- Звёзды )) -->
+		<canvas class="root__canvas-stars js-starts"></canvas>
+		<!-- <button class="btn-start"></button> -->
+
+		<main class="main">
+			<div class="main__title">
+				<h1>Ассоциация репетиторов</h1>
+				<img src="icons/top-lines.svg" alt="">
+			</div>
+			<div class="main__desc js-marquee">
+				<p>Всем. Всем. Всем. Всем, кто поймал сигнал. Мы ищем! Единомышленников, коллег, партнеров. Мы строим! Свою
+					edtech компанию. Как вам такая задачка? Вам нравится такая задачка? Какие эмоции вызывает у вас такая
+					задачка? Вы готовы вместе с нами ломать голову над решением такой задачки? Мы ждем ваш сигнал.</p>
+				<span></span>
+			</div>
+			<button class="main__btn btn btn-glitch js-tgl-signal">
+				<span class="btn__rectangle"></span>
+				<span class="btn__rectangle"></span>
+				<span class="btn__rectangle"></span>
+				<span class="btn__rectangle"></span>
+				<span class="btn__text">Послать сигнал</span>
+			</button>
+			<!-- <button class="main__btn btn js-tgl-signal">
+				<span class="btn__text">Послать сигнал</span>
+			</button> -->
+			<ul class="main__cards cards">
+				<li class="cards__item">
+					<button class="card js-tgl-vacancy" data-link="/">
+						<img src="icons/cards/job1.svg" alt="" class="card__prev">
+						<span class="card__prof">Руководитель отдела Директ / Ads</span>
+					</button>
+				</li>
+				<li class="cards__item">
+					<button class="card js-tgl-vacancy" data-link="/">
+						<img src="icons/cards/job2.svg" alt="" class="card__prev">
+						<span class="card__prof">Специалист по контекстной рекламе</span>
+					</button>
+				</li>
+				<li class="cards__item">
+					<button class="card js-tgl-vacancy" data-link="/">
+						<img src="icons/cards/job3.svg" alt="" class="card__prev">
+						<span class="card__prof">Менеджер по продукту</span>
+					</button>
+				</li>
+				<li class="cards__item">
+					<button class="card js-tgl-vacancy" data-link="/">
+						<img src="icons/cards/job4.svg" alt="" class="card__prev">
+						<span class="card__prof">Продуктовый / маркетинговый аналитик</span>
+					</button>
+				</li>
+				<li class="cards__item">
+					<button class="card js-tgl-vacancy" data-link="/">
+						<img src="icons/cards/job5.svg" alt="" class="card__prev">
+						<span class="card__prof">Маркетолог онлайн-продукта</span>
+					</button>
+				</li>
+				<li class="cards__item">
+					<button class="card js-tgl-vacancy" data-link="/">
+						<img src="icons/cards/job6.svg" alt="" class="card__prev">
+						<span class="card__prof">Тестировщик</span>
+					</button>
+				</li>
+				<li class="cards__item">
+					<button class="card js-tgl-vacancy" data-link="/">
+						<img src="icons/cards/job7.svg" alt="" class="card__prev">
+						<span class="card__prof">Бэк-эндер</span>
+					</button>
+				</li>
+				<li class="cards__item">
+					<button class="card js-tgl-vacancy" data-link="/">
+						<img src="icons/cards/job8.svg" alt="" class="card__prev">
+						<span class="card__prof">Фронт-эндер</span>
+					</button>
+				</li>
+			</ul>
+		</main>
+
+		<footer class="footer">
+			<ul class="footer__list js-light-marquee">
+				<li>Вы дизайн</li>
+				<li>Вы продукт</li>
+				<li>Вы маркетинг</li>
+				<li>Вы аналитика</li>
+				<li>Вы разработка</li>
+			</ul>
+			<ul class="footer__list js-light-marquee">
+				<li>Не важен возраст</li>
+				<li>Не важен пол</li>
+				<li>Не важна ориентация</li>
+				<li>Не важен разрез глаз</li>
+				<li>Не важен цвет кожи</li>
+			</ul>
+			<ul class="footer__list js-light-marquee">
+				<li>Важна проактивность</li>
+				<li>Важна критичность ума</li>
+				<li>Важны результаты</li>
+				<li>Важна самообучаемость</li>
+				<li>Важно бизнес-мышление</li>
+			</ul>
+			<ul class="footer__list js-light-marquee">
+				<li>Можно удаленно</li>
+				<li>Можно парт-тайм</li>
+				<li>Можно в другом часовом поясe</li>
+				<li>Можно проектно</li>
+				<li>Можно в партнерстве</li>
+			</ul>
+		</footer>
+
+		<div class="root__grch grechka">
+			<img src="icons/bottom-lines.svg" alt="">
+			<p>Powered by Grechka.Digital</p>
+		</div>
+	</div>
+
+	<!-- Форма -->
+	<div class="popup js-popup-send-signal">
+		<div class="popup__bg js-tgl-signal"></div>
+		<div class="popup__wrap">
+			<!-- Функция в js - hideArrow -->
+			<button class="popup__arrow js-return-vacancy">
+				<img src="icons/arrow.svg" alt="" class="img-svg">
+			</button>
+			<!--  -->
+			<button class="popup__close js-tgl-signal">
+				<img src="icons/close.svg" alt="" class="img-svg">
+			</button>
+			<div class="popup__content-wraper">
+				<h2 class="popup__title">Ждем ваш сигнал</h2>
+				<form action="#" class="form js-form" method="post">
+					<div class="form__wrap">
+						<div class="form__block-fields">
+							<div class="form__formfield">
+								<div class="formfield formfield_error js-formfield">
+									<input name="name-send-signal" type="text" class="formfield__input js-field" value=""
+										id="name-send-signal" tabindex="1" placeholder="Имя">
+									<span class="formfield__error">введите имя имя имя имя имя имя имя имя имя</span>
+									<span class="formfield__corner formfield__corner_bottom"></span>
+									<span class="formfield__corner formfield__corner_top"></span>
+									<span class="formfield__border"></span>
+								</div>
+							</div>
+							<div class="form__formfield">
+								<div class="formfield js-formfield">
+									<input name="email-send-signal" type="email" class="formfield__input js-field" id="email-send-signal"
+										tabindex="2" placeholder="Email">
+									<span class="formfield__error"></span>
+									<span class="formfield__corner formfield__corner_bottom"></span>
+									<span class="formfield__corner formfield__corner_top"></span>
+									<span class="formfield__border"></span>
+								</div>
+							</div>
+							<div class="form__formfield">
+								<div class="formfield js-formfield">
+									<input name="email-send-signal" type="tel" class="formfield__input js-field js-mask"
+										id="tel-send-signal" tabindex="3" placeholder="Телефон">
+									<span class="formfield__error"></span>
+									<span class="formfield__corner formfield__corner_bottom"></span>
+									<span class="formfield__corner formfield__corner_top"></span>
+									<span class="formfield__border"></span>
+								</div>
+							</div>
+						</div>
+						<div class="form__textarea">
+							<div class="formfield js-formfield">
+								<textarea class="formfield__textarea js-field" name="textarea-send-signal" id="textarea-send-signal"
+									placeholder="Расскажите, что вы умеете и чего хотите" tabindex="4"></textarea>
+								<span class="formfield__error"></span>
+								<span class="formfield__corner formfield__corner_bottom"></span>
+								<span class="formfield__corner formfield__corner_top"></span>
+								<span class="formfield__border"></span>
+							</div>
+						</div>
+					</div>
+					<div class="form__file file-block">
+						<input type="file" class="file-block__file js-upload" id="file-id" tabindex="5">
+						<label for="file-id" class="file-block__label">
+							<img src="icons/attach.svg" alt="">
+							<span>Прикрепить файл</span>
+						</label>
+						<div class="file-block__doc doc js-doc">
+							<img src="icons/file.svg" alt="" class="doc__img">
+							<span class="doc__name"></span>
+							<button class="doc__del" type="button">
+								<img src="icons/close.svg" alt="" class="img-svg">
+							</button>
+						</div>
+						<span class="file-block__error js-error-upload"></span>
+					</div>
+					<button class="form__send btn js-submit" type="submit" tabindex="6">
+						<span class="btn__text">Послать сигнал</span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--  -->
+
+	<!-- Описание вакансии -->
+	<div class="popup js-popup-vacancy">
+		<div class="popup__bg js-tgl-vacancy"></div>
+		<div class="popup__wrap popup__wrap_vacancy">
+			<button type="button" class="popup__close js-tgl-vacancy">
+				<img src="icons/close.svg" alt="" class="img-svg">
+			</button>
+			<h2 class="popup__title">Руководитель отдела Директ / Ads</h2>
+			<div class="popup__content b-content">
+				<p>Поисковый контекст — один из ключевых каналов привлечения заявок для нас. В нем мы ежегодно растем и местами, пожалуй, превосходим по уровню развития всех конкурентов. Тем не менее наш подход по-прежнему остается любительским.</p>
+				<p>Мы ищем человека, который перенесет наше продвижение в поисковом контексте и других каналах Директ/Ads на профессиональный уровень — построит процессы и команду, внедрит необходимые инструменты, обеспечит стабильный рост числа лидов.</p>
+				<p>Мы ищем очень важного человека для всей компании. Перспективы → Руководитель интернет-маркетинга.</p>
+			</div>
+			<div class="popup__content b-content">
+				<h3>Задачи:</h3>
+				<ul>
+					<li>Внедрение новых / реформирование текущих систем маркетинговой аналитики и управления ставками.</li>
+					<li>В поисковом контексте построение процесса непрерывного расширения семядра и запуска новых кампаний, повышения эффективности и переработки существующих кампаний. Построение процесса непрерывного тестирования новых каналов / механик продвижения в Директе/Ads помимо поискового контекста.</li>
+					<li>Накопление и структурирование компетенций и опыта внутри компании. Изучение и тестирование инноваций и лучших практик в отрасли.</li>
+				</ul>
+			</div>
+			<div class="popup__content b-content">
+				<h3>Ресурсы:</h3>
+				<ul>
+					<li>Бюджет Х0 000 000 рублей в год.</li>
+					<li>1 специалист по поисковому контексте. Готовы взять еще.</li>
+					<li>Многолетняя статистика кампаний и накопленный опыт.</li>
+					<li>Прямая поддержка директором по маркетингу.</li>
+					<li>Доступ к разработке.</li>
+				</ul>
+			</div>
+			<button class="popup__btn btn js-go-to-form">
+				<span class="btn__text">Послать сигнал</span>
+			</button>
+		</div>
+	</div>
+	<!-- <div class="popup js-popup-vacancy">
+		<div class="popup__bg js-tgl-vacancy"></div>
+		<div class="popup__wrap popup__wrap_vacancy">
+			<button type="button" class="popup__close js-tgl-vacancy">
+				<img src="icons/close.svg" alt="" class="img-svg">
+			</button>
+			<h2 class="popup__title">Руководитель отдела Директ / Ads</h2>
+			<div class="popup__content b-content">
+				<p>Поисковый контекст — один из ключевых каналов привлечения заявок для нас. В нем мы ежегодно растем и местами, пожалуй, превосходим по уровню развития всех конкурентов. Тем не менее наш подход по-прежнему остается любительским.</p>
+				<p>Мы ищем человека, который перенесет наше продвижение в поисковом контексте и других каналах Директ/Ads на профессиональный уровень — построит процессы и команду, внедрит необходимые инструменты, обеспечит стабильный рост числа лидов.</p>
+				<p>Мы ищем очень важного человека для всей компании. Перспективы → Руководитель интернет-маркетинга.</p>
+			</div>
+			<div class="popup__content b-content">
+				<h3>Задачи:</h3>
+				<ul>
+					<li>Внедрение новых / реформирование текущих систем маркетинговой аналитики и управления ставками.</li>
+					<li>В поисковом контексте построение процесса непрерывного расширения семядра и запуска новых кампаний, повышения эффективности и переработки существующих кампаний. Построение процесса непрерывного тестирования новых каналов / механик продвижения в Директе/Ads помимо поискового контекста.</li>
+					<li>Накопление и структурирование компетенций и опыта внутри компании. Изучение и тестирование инноваций и лучших практик в отрасли.</li>
+				</ul>
+			</div>
+			<div class="popup__content b-content">
+				<h3>Ресурсы:</h3>
+				<ul>
+					<li>Бюджет Х0 000 000 рублей в год.</li>
+					<li>1 специалист по поисковому контексте. Готовы взять еще.</li>
+					<li>Многолетняя статистика кампаний и накопленный опыт.</li>
+					<li>Прямая поддержка директором по маркетингу.</li>
+					<li>Доступ к разработке.</li>
+				</ul>
+			</div>
+			<button class="popup__btn btn js-go-to-form">
+				<span class="btn__text">Послать сигнал</span>
+			</button>
+		</div>
+	</div> -->
+	<!--  -->
+
+	<svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite">
+		<defs>
+			<filter id="filter">
+				<feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1"></feTurbulence>
+				<feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp"></feDisplacementMap>
+			</filter>
+		</defs>
+	</svg>
+
+</body>
+
+</html>
+
+
