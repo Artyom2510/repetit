@@ -303,6 +303,7 @@ $(function () {
 	};
 
 	btnGlitch = new glitchTimeline();
+	btnGlitch.start();
 
 	$('.js-btn-glitch').on({
 		mouseenter: function () {
