@@ -52,17 +52,21 @@ $(function () {
 		imgSvg();
 	});
 
-	// Форма
-	var popupSendSignal = $('.js-popup-send-signal');
-	popupSendSignal
-		.switchPopup({
-			btnClass: 'js-tgl-signal',
+	// Функция для инициализации попапов
+	function initPopup(popup, btn) {
+		popup.switchPopup({
+			btnClass: btn,
 			displayClass: 'popup_display',
 			visibleClass: 'popup_visible',
 			duration: 300,
 			overflow: true,
 		})
-		.on('beforeClose', function() {
+	}
+
+	// Попап-Форма
+	var popupSendSignal = $('.js-popup-send-signal');
+	initPopup(popupSendSignal, 'js-tgl-signal');
+	popupSendSignal.on('beforeClose', function() {
 			hideArrow();
 		});
 
@@ -71,7 +75,7 @@ $(function () {
 		popupSendSignal.removeClass('popup_with-arrow');
 	}
 
-	// Добавление бордера на на поля
+	// Добавление бордера на поля по наведению
 	var formfield = $('.js-formfield');
 	var field = $('.js-field');
 
@@ -96,10 +100,11 @@ $(function () {
 		}
 	});
 
-	// Маск для телефона
-	$('input[type="tel"]').inputmask('+7 999 999 99 99');
+	// Маска для телефона
+	var tel = $('input[type="tel"]');
+	tel.inputmask('+7 999 999 99 99');
 
-	// if ($('input[type="tel"]').val().indexOf('_') === -1)
+	// if (tel.val().indexOf('_') === -1)
 
 	// Работа с формой
 	var form = $('.js-form');
@@ -157,6 +162,7 @@ $(function () {
 		}
 	});
 
+	// Удаляю ошибку по вводу в input
 	formfield.on('input', function() {
 		$(this)
 			.removeClass('formfield_error')
@@ -197,7 +203,7 @@ $(function () {
 			// 	processData: false,
 			// 	success: function(data) {
 			// 		if (!data.success) {
-			//			console.log(data.message);
+			//			console.log(data.errors);
 			// 		} else {
 			//			popupSendSignal.switchPopup('close');
 			//			popupThx.switchPopup('open');
@@ -208,21 +214,34 @@ $(function () {
 		return false;
 	});
 
-	// // Инфо о вакансии
-	// function initVacancy(arrays) {
-	// 	console.log(arrays[1].title)
-	// }
-
 	// попап с предложенной вакансией
 	var popupVacancy = $('.js-popup-vacancy');
-	popupVacancy.switchPopup({
-			btnClass: 'js-tgl-vacancy',
-			displayClass: 'popup_display',
-			visibleClass: 'popup_visible',
-			duration: 300,
-			overflow: true,
-		});
+	initPopup(popupVacancy, 'js-tgl-vacancy');
 
+	var query;
+	// Запрос по клику на карточку, открытие попапа-вакансия
+	$('.js-query').on('click', function() {
+		query = $(this).data('query');
+		popupVacancy.switchPopup('open'); // <-- эту строку удалить, оставил для теста
+
+		// $.ajax({
+		// 	url: query,
+		// 	method: 'POST',
+		// 	async: false,
+		// 	contentType: false,
+		// 	processData: false,
+		// 	success: function(data) {
+		// 		if (!data.success) {
+		// 			console.log(data.errors);
+		// 		} else {
+		// 			// Тут функция подменяющая контент
+		// 			// 
+		// 			// После открытие попапа
+		// 			popupVacancy.switchPopup('open');
+		// 		}
+		// 	}
+		// });
+	});
 
 	// Клик по кнопке, переход к  форме
 	$('.js-go-to-form').on('click', function() {
@@ -238,5 +257,116 @@ $(function () {
 		popupSendSignal.switchPopup('close');
 		popupVacancy.switchPopup('open');
 	});
+
+	// Попап спасибо
+	var thx = $('.js-popup-thx');
+	initPopup(thx, 'js-tgl-thx');
+
+	// Глитч кнопки
+	var	filter = document.querySelector('.svg-sprite');
+	var turb = filter.querySelector('#filter feTurbulence');
+	var turbVal = { val: 0.000001 };
+	var turbValX = { val: 0.000001 };
+
+	var glitchTimeline = function() {
+		var timeline = new TimelineMax({
+			repeat: -1,
+			repeatDelay: 2,
+			paused: true,
+			onUpdate: function () {
+				turb.setAttribute('baseFrequency', turbVal.val + ' ' + turbValX.val);
+			}
+		});
+
+		timeline
+			.to(turbValX, 0.1, { val: 0.5 })
+			.to(turbVal, 0.1, { val: 0.02 });
+		timeline
+			.set(turbValX, { val: 0.000001 })
+			.set(turbVal, { val: 0.000001 });
+		timeline
+			.to(turbValX, 0.2, { val: 0.4 }, 0.4)
+			.to(turbVal, 0.2, { val: 0.002 }, 0.4);
+		timeline
+			.set(turbValX, { val: 0.000001 })
+			.set(turbVal, { val: 0.000001 });
+
+		// console.log("duration is: " + timeline.duration());
+		return {
+			start: function() {
+				timeline.play(0);
+			},
+			stop: function() {
+				timeline.pause();
+			}
+		};
+	};
+
+	btnGlitch = new glitchTimeline();
+
+	$('.js-btn-glitch').on({
+		mouseenter: function () {
+			$(this).removeClass('btn_hovered');
+			btnGlitch.stop();
+			// if (!$(this).hasClass('btn_disable')) {
+			// }
+		},
+		mouseleave: function () {
+			$(this).addClass('btn_hovered');
+			btnGlitch.start();
+		}
+	});
+
+	// Анимация по наведению на гречку
+	// var options = {
+	// 	template: Power0.easeNone,
+	// 	strength: 3,
+	// 	points: 120,
+	// 	taper: "none",
+	// 	randomize: true,
+	// 	clamp: false
+	// };
+	
+	// var duration = 15;
+	
+	// var origin = {
+	// 	left: 20,
+	// 	top: 20
+	// };
+	
+	// var opacityEase = RoughEase.ease.config(options);
+	// var widthEase = RoughEase.ease.config(options);
+	// var heightEase = RoughEase.ease.config(options);
+	// var originEase = RoughEase.ease.config(options);
+	
+	// new TimelineMax({
+	// 	yoyo: true,
+	// 	repeat: -1
+	// })
+	// 	.to('.grechka p', duration, {
+	// 		autoAlpha: .3,
+	// 		ease: opacityEase
+	// 	})
+	// 	.to('.grechka p', duration, {
+	// 		scaleX: 1.1,
+	// 		ease: widthEase
+	// 	}, 0)
+	// 	.to('.grechka p', duration, {
+	// 		scaleY: 1.1,
+	// 		ease: heightEase
+	// 	}, 0)
+	// 	.to(origin, duration, {
+	// 		left: 40,
+	// 		top: 40,
+	// 		roundProps: 'top, left',
+	// 		ease: originEase,
+	// 		onUpdate: updateOrigin
+	// 	}, 0);
+	
+	// function updateOrigin() {
+	// 	TweenLite.set('.grechka p', {
+	// 		transformOrigin: origin.left + '% ' + origin.top + '%'
+	// 	});
+	// }
 
 });

@@ -152,9 +152,9 @@ ul, ol {
 		}
 	}
 
-	&:hover,
-	&:focus {
+	&:hover {
 		#{$p}__rectangle {
+
 			&:nth-of-type(2n) {
 				box-shadow: 1px 0 0 $red, -1px 0 0 $green,;
 				animation: glitch-new 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
@@ -406,5 +406,72 @@ ul, ol {
 		font-weight: 400;
 		text-align: center;
 		color: rgba($white, .8);
+
+		&:hover, &:focus {
+			animation: glitch-grch 2s infinite reverse;
+		}
 	}
+}
+
+$px: 0;
+$px2: 0;
+
+@mixin mini-glitch($c1, $c2, $coeff, $start, $end) {
+	$interval: $end - $start;
+	@for $i from $start through $end {
+		#{$i * 1%} {
+			@if $i < $start + ($interval/2) {
+				$px: $px + $coeff;
+				$px2: -$px;
+				text-shadow: #{$px}px 0 0 $c1, #{$px2}px 0 0 $c2;
+			} @else {
+				$px: $px - 1;
+				$px2: -$px;
+				text-shadow: #{$px}px 0 0 $c1, #{$px2}px 0 0 $c2;
+			}
+		}
+	}
+	$px: 0;
+	$px2: 0;
+}
+
+@mixin big-glitch($c1, $c2, $distance, $start, $end) {
+	@for $i from $start through $end {
+		#{$i * 1%} {
+			@if $i == $end {
+				text-shadow: 0 random(10)-5 + px 0 $c1, 0 random(10)-5 + px 0 $c2;
+			} @else {
+				$px: $distance;
+				$px2: -$px;
+				text-shadow: #{$px}px random(10)-5 + px 0 $c1,
+										 #{$px2}px random(10)-5 + px 0 $c2;
+			}
+		}
+	}
+	$px: 0;
+	$px2: 0;
+}
+
+@keyframes glitch-grch {
+	@include mini-glitch($orange, $red, 1.5, 0, 10);
+	@include mini-glitch($orange, $blue, 0.9, 11, 20);
+	@include mini-glitch($red, $blue, 0.6, 21, 40);
+
+	@include big-glitch($red, $blue, 20, 21, 22);
+
+	@include mini-glitch($orange, $blue, 0.7, 43, 25);
+	@include mini-glitch($orange, $red, 1, 31, 30);
+
+	@include big-glitch($orange, $blue, 20, 31, 22);
+
+	@include mini-glitch($orange, $red, 0.9, 32, 35);
+
+	@include big-glitch($orange, $red, 25, 35, 36);
+
+	@include mini-glitch($orange, $red, 1.5, 35, 40);
+	@include mini-glitch($orange, $blue, 0.7, 37, 40);
+
+	@include big-glitch($blue, $red, 15, 40, 40);
+
+	@include mini-glitch($red, $blue, 0.9, 40, 40);
 }

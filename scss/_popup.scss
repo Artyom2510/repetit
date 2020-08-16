@@ -143,6 +143,10 @@
 		height: 50px;
 	}
 
+	&__thx {
+		position: relative;
+	}
+
 	&_display {
 		display: flex;
 	}
@@ -498,5 +502,43 @@
 				transition: fill .2s ease;
 			}
 		}
+	}
+}
+
+.popup-thx {
+	display: block;
+	width: 100%;
+	max-width: 375px;
+	padding-bottom: 34px;
+	background-color: transparent;
+
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: calc(100% - 56px);
+		background-color: #161b2f;
+	}
+
+	img {
+		display: block;
+		width: 54.93%;
+		height: auto;
+		margin: 0 auto 27px;
+	}
+
+	p {
+		display: block;
+		font-family: "PressStart2P", sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+		font-weight: 400;
+		letter-spacing: 0.24px;
+		color: $white;
+		text-align: center;
+		text-transform: uppercase;
 	}
 }
