@@ -194,7 +194,6 @@ $(function () {
 	initPopup(thx, 'js-tgl-thx');
 
 	// Отправка формы
-	// $('.form').on('beforeSubmit', function(e) {
 	form.on('submit', function(e) {
 		e.preventDefault();
 		var formData = new FormData($(this)[0]);
@@ -204,23 +203,25 @@ $(function () {
 		} else if (formfield.hasClass('formfield_error')) {
 			submit.attr('disabled', 'true').addClass('btn_disabled');
 		} else {
-			console.log('ajax');
-			// $.ajax({
-			// 	url: form.attr('action'),
-			// 	data: formData,
-			// 	method: form.attr('method'),
-			// 	async: false,
-			// 	contentType: false,
-			// 	processData: false,
-			// 	success: function(data) {
-			// 		if (!data.success) {
-			//			console.log(data.errors);
-			// 		} else {
-			//			popupSendSignal.switchPopup('close');
-			//			thx.switchPopup('open');
-			//		}
-			// 	}
-			// });
+			$.ajax({
+				url: form.attr('action'),
+				data: formData,
+				method: form.attr('method'),
+				async: false,
+				contentType: false,
+				processData: false,
+				success: function(data) {
+					if (!data.success) {
+						console.log(data.errors);
+					} else {
+						popupSendSignal.switchPopup('close');
+						thx.switchPopup('open');
+						setTimeout(function() {
+							thx.switchPopup('close');
+						}, 400);
+					}
+				}
+			});
 		}
 		return false;
 	});
@@ -230,28 +231,28 @@ $(function () {
 	initPopup(popupVacancy, 'js-tgl-vacancy');
 
 	var query;
+	var dataBlock = $('.js-content-wraper');
 	// Запрос по клику на карточку, открытие попапа-вакансия
 	$('.js-query').on('click', function() {
 		query = $(this).data('query');
-		popupVacancy.switchPopup('open'); // <-- эту строку удалить, оставил для теста
 
-		// $.ajax({
-		// 	url: query,
-		// 	method: 'POST',
-		// 	async: false,
-		// 	contentType: false,
-		// 	processData: false,
-		// 	success: function(data) {
-		// 		if (!data.success) {
-		// 			console.log(data.errors);
-		// 		} else {
-		// 			// Тут функция подменяющая контент
-		// 			// 
-		// 			// После открытие попапа
-		// 			popupVacancy.switchPopup('open');
-		// 		}
-		// 	}
-		// });
+		$.ajax({
+			url: query,
+			method: 'POST',
+			async: false,
+			contentType: false,
+			processData: false,
+			success: function(data) {
+				if (!data.success) {
+					console.log(data.errors);
+				} else {
+					// функция подменяющая контент
+					dataBlock.html(data.data);
+					// Открытие попапа
+					popupVacancy.switchPopup('open');
+				}
+			}
+		});
 	});
 
 	// Клик по кнопке, переход к  форме
