@@ -166,6 +166,7 @@
 	}
 
 	&__item {
+		position: relative;
 		display: block;
 		width: calc(25% - 30px);
 		// margin-bottom: 24px;
@@ -173,7 +174,14 @@
 		margin-right: 40px;
 		outline: none !important;
 
+		@for $i from 1 through 8 {
+			&:nth-child(#{$i}) {
+				z-index: $i;
+			}
+		}
+
 		@include media(md) {
+			width: 272px;
 			min-width: 272px;
 			margin-right: 0;
 			margin-bottom: 0;
@@ -204,6 +212,8 @@
 			margin-right: 0;
 
 			@include media(md) {
+				width: 296px;
+				min-width: 296px;
 				padding-right: 24px;
 			}
 		}
@@ -218,8 +228,8 @@
 	height: 90px;
 	padding: 15px 32px 20px 28px;
 	background-color: $black;
-	border: solid 1px transparent;
 	text-decoration: none;
+	border: 1px solid;
 	border-image-source: linear-gradient(to bottom right, $green, $black);
 	border-image-slice: 1;
 	transition: background-color .3s ease;
@@ -247,7 +257,7 @@
 		left: 0;
 		transform: translate(-50%, 50%) rotate(45deg);
 		border-top: 1px solid $green;
-		background-image: linear-gradient(to right, #000a14, #000a14 27px, transparent 0);
+		background-image: linear-gradient(to right, #000a14, #000a14 27px, rgba(white, .0001) 0);
 	}
 
 	&::after {
@@ -255,7 +265,7 @@
 		right: 0;
 		transform: translate(50%, -50%) rotate(45deg);
 		border-bottom: 1px solid $green;
-		background-image: linear-gradient(to left, #000a14, #000a14 27px, transparent 0);
+		background-image: linear-gradient(to left, #000a14, #000a14 27px, rgba(white, .0001) 0);
 	}
 	
 	&__prev {
