@@ -1,6 +1,6 @@
 .popup {
 	$p: &;
-	z-index: 5;
+	z-index: 10;
 	display: none;
 	justify-content: center;
 	align-items: center;
@@ -24,22 +24,26 @@
 		position: relative;
 		width: 712px;
 		max-height: 100vh;
-		padding: 56px 24px 32px;
 		border: solid 1px $border;
 		background-color: $bg;
 		overflow-y: auto;
 
-		&_vacancy {
-			padding: 56px 40px 48px;
-
-			@include media(xs) {
-				padding: 56px 24px 32px;
-			}
-		}
-
 		@include media(xs) {
 			height: 100vh;
 			width: 100vw;
+		}
+	}
+
+	&__padding {
+		display: block;
+		padding: 56px 24px 32px;
+
+		&_vacancy {
+			padding: 56px 40px 32px;
+
+			@include media(xs) {
+				padding: 56px 24px 48px;
+			}
 		}
 	}
 
@@ -141,6 +145,10 @@
 		margin: 0 auto;
 		width: 326px;
 		height: 50px;
+
+		@include media(xxs) {
+			width: calc(100% - 48px);
+		}
 	}
 
 	&__thx {
@@ -269,11 +277,11 @@
 	&_error {
 		#{$p}__corner {
 			&_bottom {
-				background-image: linear-gradient(45deg, $bg, $bg 10px, $error 10px, $error 11px, transparent 0);
+				background-image: linear-gradient(45deg, $bg, $bg 10px, $error 10px, $error 11px, rgba($white, 0.0001) 0);
 			}
 
 			&_top {
-				background-image: linear-gradient(45deg, transparent, transparent 11px, $error 11px, $error 12px, $bg 0);
+				background-image: linear-gradient(45deg, rgba($white, 0.0001), rgba($white, 0.0001) 11px, $error 11px, $error 12px, $bg 0);
 			}
 		}
 
@@ -300,13 +308,13 @@
 		&_bottom {
 			bottom: 20px;
 			left: 0;
-			background-image: linear-gradient(45deg, $bg, $bg 10px, $green 10px, $green 11px, transparent 0);
+			background-image: linear-gradient(45deg, $bg, $bg 10px, $green 10px, $green 11px, rgba($white, 0.0001) 0);
 		}
 
 		&_top {
 			top: 0;
 			right: 0;
-			background-image: linear-gradient(45deg, transparent, transparent 11px, $green 11px, $green 12px, $bg 0);
+			background-image: linear-gradient(45deg, rgba($white, 0.0001), rgba($white, 0.0001) 11px, $green 11px, $green 12px, $bg 0);
 		}
 	}
 
@@ -316,7 +324,7 @@
 		z-index: 1;
 		width: 100%;
 		height: calc(100% - 20px);
-		border: solid 1px transparent;
+		border: solid 1px;
 		border-image: linear-gradient(to bottom right, $green, $black);
 		border-image-slice: 1;
 	}

@@ -115,6 +115,7 @@ $(function () {
 	var submit = $('.js-submit');
 	var maxFileSize = 3 * 1024 * 1024;
 	var expansion;
+	var isFormat;
 	var value;
 	var size = 0;
 	var file = null;
@@ -135,25 +136,31 @@ $(function () {
 
 	// Загрузка фаила
 	upload.on('change', function () {
+		isFormat = false;
 		file = $(this)[0].files[0];
 		if (!!file) {
 			value = file.name;
 			size = file.size;
 			expansion = value.toLowerCase().split('.').pop();
-			formats.map(function(format) {
-				if(format !== expansion) {
-					showError(errorTextFormat);
-					submit.attr('disabled', 'true').addClass('btn_disabled');
+			var i = 0;
+			while (i < formats.length) {
+				if(formats[i] === expansion) {
+					isFormat = !isFormat;
+					break;
 				}
-			});
+				i++;
+			};
 
-			if (size > maxFileSize || !size) {
+			if (!isFormat) {
+				showError(errorTextFormat);
+				submit.attr('disabled', 'true').addClass('btn_disabled');
+			} else if (size > maxFileSize || !size) {
 				showError(errorTextSize);
 				submit.attr('disabled', 'true').addClass('btn_disabled');
 			} else {
 				hideError();
 			}
-			if (!formfield.hasClass('formfield_error')) {
+			if (!formfield.hasClass('formfield_error') && !errorUpload.text().length) {
 				submit.removeAttr('disabled').removeClass('btn_disabled');
 			}
 			doc
@@ -191,7 +198,7 @@ $(function () {
 	form.on('submit', function(e) {
 		e.preventDefault();
 		var formData = new FormData($(this)[0]);
-		if (!size) {
+		if (size > maxFileSize || !size) {
 			showError(errorTextFormat);
 			submit.attr('disabled', 'true').addClass('btn_disabled');
 		} else if (formfield.hasClass('formfield_error')) {
