@@ -217,17 +217,19 @@
 	width: 100%;
 	height: 90px;
 	padding: 15px 32px 20px 28px;
-	background-color: #161b2f;
+	background-color: $black;
 	border: solid 1px transparent;
 	text-decoration: none;
 	border-image-source: linear-gradient(to bottom right, $green, $black);
 	border-image-slice: 1;
+	transition: background-color .3s ease;
 
 	&:hover,
 	&:focus,
 	&:active {
 		color: $white;
 		text-decoration: none;
+		background-color: #161b2f;
 	}
 
 	&::before,
@@ -243,15 +245,17 @@
 	&::before {
 		bottom: 0;
 		left: 0;
-		transform: translate(-2px, 2px);
-		background-image: linear-gradient(45deg, #000a14, #000a14 16px, $green 16px, $green 17px, transparent 0);
+		transform: translate(-50%, 50%) rotate(45deg);
+		border-top: 1px solid $green;
+		background-image: linear-gradient(to right, #000a14, #000a14 27px, transparent 0);
 	}
 
 	&::after {
 		top: 0;
 		right: 0;
-		transform: translate(2px, -2px);
-		background-image: linear-gradient(225deg, #000a14, #000a14 16px, $green 16px, $green 17px, transparent 0);
+		transform: translate(50%, -50%) rotate(45deg);
+		border-bottom: 1px solid $green;
+		background-image: linear-gradient(to left, #000a14, #000a14 27px, transparent 0);
 	}
 	
 	&__prev {

@@ -182,6 +182,10 @@ $(function () {
 		doc.removeClass('doc_display');
 	});
 
+	// Попап спасибо
+	var thx = $('.js-popup-thx');
+	initPopup(thx, 'js-tgl-thx');
+
 	// Отправка формы
 	// $('.form').on('beforeSubmit', function(e) {
 	form.on('submit', function(e) {
@@ -206,7 +210,7 @@ $(function () {
 			//			console.log(data.errors);
 			// 		} else {
 			//			popupSendSignal.switchPopup('close');
-			//			popupThx.switchPopup('open');
+			//			thx.switchPopup('open');
 			//		}
 			// 	}
 			// });
@@ -257,10 +261,6 @@ $(function () {
 		popupSendSignal.switchPopup('close');
 		popupVacancy.switchPopup('open');
 	});
-
-	// Попап спасибо
-	var thx = $('.js-popup-thx');
-	initPopup(thx, 'js-tgl-thx');
 
 	// Глитч кнопки
 	var	filter = document.querySelector('.svg-sprite');
