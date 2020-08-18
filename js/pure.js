@@ -84,6 +84,14 @@ window.addEventListener('load', function() {
 	// 	executeFrame();
 	// });
 
+	// Настройка вспомогательных переменных, для сафари
+	function updateDeviceProps() {
+		var vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', vh + 'px');
+	}
+	window.addEventListener('resize', updateDeviceProps);
+	updateDeviceProps();
+
 	// Объявление переменных
 	var marquee = document.querySelector('.js-marquee p');
 	var light = document.querySelectorAll('.js-light-marquee');
