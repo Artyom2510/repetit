@@ -13,14 +13,16 @@
 	<!-- <meta property="og:image" content="path/to/image.jpg"> -->
 	<meta name="application-name" content="Repetit">
 
-	<!-- <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
-	<link rel="shortcut icon" type="image/x-icon" href="img/favicon/favicon.ico">
-	<link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="img/favicon/mstile-144x144.png" sizes="144x144">
-	<link rel="manifest" href="img/favicon/site.webmanifest">
-	<link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#ee0e33">
-	<meta name="msapplication-config" content="img/favicon/browserconfig.xml"> -->
+	<link rel="shortcut icon" type="image/x-icon" href="favicon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="favicon/mstile-144x144.png" sizes="144x144">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+	<link rel="manifest" href="favicon/site.webmanifest">
+	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="msapplication-config" content="favicon/browserconfig.xml">
 
 	<link rel="stylesheet" href="css/main.css">
 
@@ -42,7 +44,7 @@
 
 		<main class="main">
 			<div class="main__title">
-				<h1>Ассоциация репетиторов</h1>
+				<a href="https://repetit.ru/" target="_blank" class="h1">Ассоциация репетиторов</a>
 				<img src="icons/top-lines.svg" alt="">
 			</div>
 			<div class="main__desc js-marquee">
@@ -51,7 +53,7 @@
 					задачка? Вы готовы вместе с нами ломать голову над решением такой задачки? Мы ждем ваш сигнал.</p>
 				<span></span>
 			</div>
-			<button class="main__btn btn_hovered btn js-btn-glitch js-tgl-signal">
+			<button class="main__btn btn js-btn-glitch js-tgl-signal">
 				<span class="btn__rectangle"></span>
 				<span class="btn__rectangle"></span>
 				<span class="btn__rectangle"></span>
@@ -153,7 +155,7 @@
 	</div>
 
 	<!-- Форма -->
-	<div class="popup js-popup-send-signal">
+	<div class="popup  js-popup-send-signal">
 		<div class="popup__bg js-tgl-signal"></div>
 		<div class="popup__wrap">
 			<div class="popup__padding">
@@ -227,10 +229,7 @@
 							</div>
 							<span class="file-block__error js-error-upload"></span>
 						</div>
-						<!-- <button class="form__send btn js-submit" type="submit" tabindex="6">
-							<span class="btn__text">Послать сигнал</span>
-						</button> -->
-						<button class="form__send btn btn_hovered js-submit js-btn-glitch" type="submit" tabindex="6">
+						<button class="form__send btn js-btn-glitch" type="submit" tabindex="6">
 							<span class="btn__rectangle"></span>
 							<span class="btn__rectangle"></span>
 							<span class="btn__rectangle"></span>
@@ -241,16 +240,17 @@
 				</div>
 			</div>
 		</div>
+		</div>
+		<div class="popup__thx popup-thx">
+			<img src="icons/ufo.svg" alt="">
+			<p>Ваш сигнал<br> отправлен!</p>
+		</div>
 	</div>
 	<!--  -->
 
 	<!-- СпасибА -->
 	<div class="popup js-popup-thx">
 		<div class="popup__bg js-tgl-thx"></div>
-		<div class="popup__thx popup-thx">
-			<img src="icons/ufo.svg" alt="">
-			<p>Ваш сигнал<br> отправлен!</p>
-		</div>
 	</div>
 
 	<!-- Описание вакансии -->
@@ -288,16 +288,13 @@
 						</ul>
 					</div>
 				</div>
-				<button class="popup__btn btn btn_hovered js-go-to-form js-btn-glitch">
+				<button class="popup__btn btn js-go-to-form js-btn-glitch">
 					<span class="btn__rectangle"></span>
 					<span class="btn__rectangle"></span>
 					<span class="btn__rectangle"></span>
 					<span class="btn__rectangle"></span>
 					<span class="btn__text">Послать сигнал</span>
 				</button>
-				<!-- <button class="popup__btn btn js-go-to-form">
-					<span class="btn__text">Послать сигнал</span>
-				</button> -->
 			</div>
 		</div>
 	</div>
