@@ -329,9 +329,11 @@ $(function () {
 		});
 	}
 
-	var findReg = navigator.userAgent.match(/OS (\d[0-9])/gm);
-	if (findReg) {
-		if (findReg[0].match(/(1[0-9])/)[0] > 12) {
+	var findReg = navigator.userAgent;
+	if (findReg.indexOf('Safari') != - 1) {
+		var regex = /OS (\d[0-9])/;
+		var matches = findReg.match(regex);
+		if (matches[1] > 12) {
 			glithcBtn();
 		}
 	} else {
