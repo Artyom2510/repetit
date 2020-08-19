@@ -12,7 +12,6 @@
 	&__list {
 		display: flex;
 		justify-content: center;
-		// margin-bottom: 32px;
 		margin-bottom: 2.96vh;
 
 		@include media(md) {
@@ -47,7 +46,7 @@
 		}
 
 		@include media(xs) {
-			margin-bottom: 5.18vh;
+			margin-bottom: 2.7vh;
 
 			&.move {
 				&:nth-of-type(2n + 1),
@@ -58,7 +57,7 @@
 		}
 
 		@include media(xxs) {
-			margin-bottom: 4vh;
+			margin-bottom: 3.2vh;
 		}
 
 		&:last-of-type {

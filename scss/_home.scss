@@ -2,9 +2,7 @@
 	position: relative;
 	display: block;
 	padding-top: 4.81vh;
-	// padding-top: 52px;
 	padding-bottom: 5.19vh;
-	// padding-bottom: 56px;
 
 	@include media(md) {
 		padding-top: 8vh;
@@ -17,19 +15,22 @@
 	}
 
 	@include media(xs) {
-		padding-top: 5.55vh;
-		padding-bottom: 6.75vh;
-	}
-
-	@include media(xxs) {
+		padding-top: 5vh;
 		padding-bottom: 5vh;
 	}
 
 	&__title {
 		position: relative;
-		// margin-bottom: 52px;
 		margin-bottom: 4.81vh;
 		text-align: center;
+
+		@include media(md) {
+			margin-bottom: 6.64vh;
+		}
+
+		@include media(xs) {
+			margin-bottom: 4vh;
+		}
 
 		img {
 			position: absolute;
@@ -46,21 +47,12 @@
 				min-width: 100%;
 			}
 		}
-
-		@include media(md) {
-			margin-bottom: 6.64vh;
-		}
-
-		@include media(xs) {
-			margin-bottom: 4.95vh;
-		}
 	}
 
 	&__desc {
 		position: relative;
 		display: block;
 		width: 100%;
-		// margin: 0 0 48px;
 		margin: 0 0 4.44vh;
 		padding: 9px 36px 8px;
 		overflow: hidden;
@@ -70,11 +62,11 @@
 		outline-offset: -2px;
 
 		@include media(md) {
-			margin: 0 0 8.01vh;
+			margin-bottom: 8.01vh;
 		}
 
 		@include media(xs) {
-			margin-bottom: 6.3vh;
+			margin-bottom: 5vh;
 		}
 
 		p {
@@ -109,7 +101,6 @@
 	&__btn {
 		width: 265px;
 		height: 64px;
-		// margin-bottom: 48px;
 		margin: 0 auto 4.44vh;
 
 		@include media(md) {
@@ -118,6 +109,7 @@
 
 		@include media(xs) {
 			margin-bottom: 7.35vh;
+			height: 48px;
 		}
 
 		@include media(xxs) {
@@ -170,7 +162,6 @@
 		position: relative;
 		display: block;
 		width: calc(25% - 30px);
-		// margin-bottom: 24px;
 		margin-bottom: 2.22vh;
 		margin-right: 40px;
 		outline: none !important;
