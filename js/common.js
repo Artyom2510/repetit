@@ -79,15 +79,6 @@ $(function () {
 	initPopup(popupSendSignal, 'js-tgl-signal');
 	popupSendSignal.on('beforeClose', function () {
 		hideArrow();
-
-		popup.on('beforeOpen', function () {
-			$('.root').addClass('fixed');
-		});
-
-		popup.on('beforeClose', function () {
-			$('.root').removeClass('fixed');
-		});
-
 	});
 
 	popupSendSignal.on('beforeOpen', function (e, popup, state) {
