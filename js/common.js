@@ -78,6 +78,15 @@ $(function () {
 	initPopup(popupSendSignal, 'js-tgl-signal');
 	popupSendSignal.on('beforeClose', function () {
 		hideArrow();
+
+		popup.on('beforeOpen', function () {
+			$('.root').addClass('fixed');
+		});
+
+		popup.on('beforeClose', function () {
+			$('.root').removeClass('fixed');
+		});
+
 	});
 
 	popupSendSignal.on('beforeOpen', function (e, popup, state) {
@@ -125,7 +134,6 @@ $(function () {
 			$(this).parent().addClass('formfield_green');
 		},
 		'blur': function () {
-			// if (!$(this).val().length)
 			$(this).parent().removeClass('formfield_green');
 		}
 	});
@@ -152,7 +160,7 @@ $(function () {
 	}
 
 	// Ошибки для загружаемого фаила
-	var errorTextFormat = "Выберите файл с расширением doc";
+	var errorTextFormat = "Выберите файл с расширением doc, pdf";
 	var errorTextSize = "Файл более 3 Мб или пустой";
 
 	// Загрузка фаила
@@ -195,17 +203,16 @@ $(function () {
 		$(this)
 		.removeClass('formfield_error')
 		.children('.formfield__error').text("");
-		if (size && !formfield.hasClass('formfield_error')) {
+		if (!formfield.hasClass('formfield_error') && !$('.js-error-upload').text().length) {
 			$('.js-submit').removeAttr('disabled').removeClass('btn_disabled');
 		}
 	});
 
 	// Удаление файла
 	$(document).on('click', '.js-doc .doc__del', function () {
-		showError(errorTextFormat);
-		$('.js-submit').attr('disabled', 'true').addClass('btn_disabled');
 		$(this).siblings('.doc__name').text("");
 		$('.js-upload').val(null);
+		hideError();
 		size = 0;
 		$('.js-doc').removeClass('doc_display');
 	});
@@ -244,8 +251,8 @@ $(function () {
 		currentVacancy = popupVacancy.find('.popup__title').text();
 		popupVacancy.switchPopup('close');
 		popupSendSignal
-		.addClass('popup_with-arrow')
-		.switchPopup('open');
+			.addClass('popup_with-arrow')
+			.switchPopup('open');
 	});
 
 	// Клик по стрелке
