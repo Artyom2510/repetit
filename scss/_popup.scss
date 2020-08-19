@@ -516,11 +516,13 @@
 }
 
 .popup-thx {
-	display: none;
-	width: 100%;
-	max-width: 375px;
+	width: 375px;
 	padding-bottom: 34px;
 	background-color: transparent;
+
+	@include media(xxs) {
+		width: 320px;
+	}
 
 	&::before {
 		content: '';
