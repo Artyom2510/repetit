@@ -49,7 +49,7 @@ $(function () {
 	imgSvg();
 
 	$('body').on('DOMNodeInserted', function () {
-		imgSvg();
+		// imgSvg();
 	});
 
 	// Функция для инициализации попапов
@@ -66,14 +66,24 @@ $(function () {
 	// Попап-Форма
 	var popupSendSignal = $('.js-popup-send-signal');
 	initPopup(popupSendSignal, 'js-tgl-signal');
-	popupSendSignal.on('beforeClose', function() {
-			hideArrow();
-		});
+	popupSendSignal.on('beforeClose', function () {
+		hideArrow();
+	});
 
-	$(document).on('pjax:success', function (e) {
-		setTimeout(function () {
-			popupSendSignal.switchPopup('close');
-		}, 5000);
+	popupSendSignal.on('beforeOpen', function (e, popup, state) {
+		$.pjax.reload('#form-wrapper', {
+			push: false,
+			replace: false,
+			url: '/site/form/'
+		});
+	});
+
+	$(document).on('pjax:success', function (e, data, status, xhr, options) {
+		if (options.container === '#ajax-form') {
+			setTimeout(function () {
+				popupSendSignal.switchPopup('close');
+			}, 5000);
+		}
 	});
 
 	// Функция, прячущая стрелочку
@@ -86,10 +96,10 @@ $(function () {
 	var field = $('.js-field');
 
 	formfield.on({
-		'mouseenter': function() {
+		'mouseenter': function () {
 			$(this).addClass('formfield_green');
 		},
-		'mouseleave': function() {
+		'mouseleave': function () {
 			if (!$(this).children(field).is(':focus')) {
 				$(this).removeClass('formfield_green');
 			}
@@ -97,10 +107,10 @@ $(function () {
 	});
 
 	field.on({
-		'focus': function() {
+		'focus': function () {
 			$(this).parent().addClass('formfield_green');
 		},
-		'blur': function() {
+		'blur': function () {
 			// if (!$(this).val().length)
 			$(this).parent().removeClass('formfield_green');
 		}
@@ -150,15 +160,17 @@ $(function () {
 			expansion = value.toLowerCase().split('.').pop();
 			var i = 0;
 			while (i < formats.length) {
-				if(formats[i] === expansion) {
+				if (formats[i] === expansion) {
 					isFormat = !isFormat;
 					break;
 				}
 				i++;
-			};
+			}
+			;
 
 			if (!isFormat) {
-				showError(errorTextFormat);___
+				showError(errorTextFormat);
+				___
 				submit.attr('disabled', 'true').addClass('btn_disabled');
 			} else if (size > maxFileSize || !size) {
 				showError(errorTextSize);
@@ -170,23 +182,23 @@ $(function () {
 				submit.removeAttr('disabled').removeClass('btn_disabled');
 			}
 			doc
-				.addClass('doc_display')
-				.children('.doc__name').text(value);
+			.addClass('doc_display')
+			.children('.doc__name').text(value);
 		}
 	});
 
 	// Удаляю ошибку по вводу в input
-	formfield.on('input', function() {
+	formfield.on('input', function () {
 		$(this)
-			.removeClass('formfield_error')
-			.children('.formfield__error').text("");
+		.removeClass('formfield_error')
+		.children('.formfield__error').text("");
 		if (size && !formfield.hasClass('formfield_error')) {
 			submit.removeAttr('disabled').removeClass('btn_disabled');
 		}
 	});
 
 	// Удаление файла
-	doc.children('.doc__del').on('click', function() {
+	doc.children('.doc__del').on('click', function () {
 		showError(errorTextFormat);
 		submit.attr('disabled', 'true').addClass('btn_disabled');
 		$(this).siblings('.doc__name').text("");
@@ -202,7 +214,7 @@ $(function () {
 	var query;
 	var dataBlock = $('.js-content-wraper');
 	// Запрос по клику на карточку, открытие попапа-вакансия
-	$('.js-query').on('click', function() {
+	$('.js-query').on('click', function () {
 		query = $(this).data('query');
 
 		$.ajax({
@@ -211,7 +223,7 @@ $(function () {
 			async: false,
 			contentType: false,
 			processData: false,
-			success: function(data) {
+			success: function (data) {
 				if (!data.success) {
 					console.log(data.errors);
 				} else {
@@ -225,15 +237,15 @@ $(function () {
 	});
 
 	// Клик по кнопке, переход к  форме
-	$('.js-go-to-form').on('click', function() {
+	$('.js-go-to-form').on('click', function () {
 		popupVacancy.switchPopup('close');
 		popupSendSignal
-			.addClass('popup_with-arrow')
-			.switchPopup('open');
+		.addClass('popup_with-arrow')
+		.switchPopup('open');
 	});
 
 	// Клик по стрелке
-	$('.js-return-vacancy').on('click', function() {
+	$(document).on('click', '.js-return-vacancy', function () {
 		hideArrow();
 		popupSendSignal.switchPopup('close');
 		popupVacancy.switchPopup('open');
@@ -242,12 +254,12 @@ $(function () {
 	// Глитч кнопки
 	function glithcBtn() {
 		$('.js-btn-glitch').addClass('btn_hovered');
-		var	filter = document.querySelector('.svg-sprite');
+		var filter = document.querySelector('.svg-sprite');
 		var turb = filter.querySelector('#filter feTurbulence');
-		var turbVal = { val: 0.000001 };
-		var turbValX = { val: 0.000001 };
+		var turbVal = {val: 0.000001};
+		var turbValX = {val: 0.000001};
 
-		var glitchTimeline = function() {
+		var glitchTimeline = function () {
 			var timeline = new TimelineMax({
 				repeat: -1,
 				repeatDelay: 2,
@@ -258,24 +270,24 @@ $(function () {
 			});
 
 			timeline
-				.to(turbValX, 0.1, { val: 0.5 })
-				.to(turbVal, 0.1, { val: 0.02 });
+			.to(turbValX, 0.1, {val: 0.5})
+			.to(turbVal, 0.1, {val: 0.02});
 			timeline
-				.set(turbValX, { val: 0.000001 })
-				.set(turbVal, { val: 0.000001 });
+			.set(turbValX, {val: 0.000001})
+			.set(turbVal, {val: 0.000001});
 			timeline
-				.to(turbValX, 0.2, { val: 0.4 }, 0.4)
-				.to(turbVal, 0.2, { val: 0.002 }, 0.4);
+			.to(turbValX, 0.2, {val: 0.4}, 0.4)
+			.to(turbVal, 0.2, {val: 0.002}, 0.4);
 			timeline
-				.set(turbValX, { val: 0.000001 })
-				.set(turbVal, { val: 0.000001 });
+			.set(turbValX, {val: 0.000001})
+			.set(turbVal, {val: 0.000001});
 
 			// console.log("duration is: " + timeline.duration());
 			return {
-				start: function() {
+				start: function () {
 					timeline.play(0);
 				},
-				stop: function() {
+				stop: function () {
 					timeline.pause();
 				}
 			};
@@ -304,7 +316,7 @@ $(function () {
 		navigator.userAgent.indexOf('CriOS') == -1 &&
 		navigator.userAgent.indexOf('FxiOS') == -1;
 
-		if (isSafari) {
+	if (isSafari) {
 		var findReg = navigator.userAgent;
 		console.log(findReg)
 		var regex = /OS (\d?[0-9])/;
