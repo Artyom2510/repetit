@@ -60,7 +60,15 @@ $(function () {
 			visibleClass: 'popup_visible',
 			duration: 300,
 			overflow: true,
-		})
+		});
+
+		popup.on('beforeOpen', function () {
+			$('.root').addClass('fixed');
+		});
+
+		popup.on('beforeClose', function () {
+			$('.root').removeClass('fixed');
+		});
 	}
 
 	// Попап-Форма
@@ -140,7 +148,7 @@ $(function () {
 	}
 
 	// Ошибки для загружаемого фаила
-	var errorTextFormat = "Выберите файл с расширением doc";
+	var errorTextFormat = "Выберите файл с расширением pdf, doc";
 	var errorTextSize = "Файл более 3 Мб или пустой";
 
 	// Загрузка фаила
