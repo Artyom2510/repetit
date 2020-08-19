@@ -26,6 +26,20 @@
 
 	<link rel="stylesheet" href="css/main.css">
 
+	<script>
+		dataLayer = [];
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-6VC6L');
+	</script>
+	<!-- End Google Tag Manager -->
+
 	<script src="js/libs/jquery-3.4.1.min.js"></script>
 	<script src="js/libs/jquery.switchPopup.js"></script>
 	<script src="js/libs/jquery.inputmask.bundle.min.js"></script>
@@ -36,6 +50,13 @@
 </head>
 
 <body>
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-6VC6L"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 	<div class="root">
 		<!-- Звёзды )) -->
@@ -155,7 +176,7 @@
 	</div>
 
 	<!-- Форма -->
-	<div class="popup  js-popup-send-signal">
+	<div class="popup js-popup-send-signal">
 		<div class="popup__bg js-tgl-signal"></div>
 		<div class="popup__wrap">
 			<div class="popup__padding">
@@ -240,18 +261,13 @@
 				</div>
 			</div>
 		</div>
-		</div>
+		<!-- СпасибА -->
 		<div class="popup__thx popup-thx">
 			<img src="icons/ufo.svg" alt="">
 			<p>Ваш сигнал<br> отправлен!</p>
 		</div>
 	</div>
 	<!--  -->
-
-	<!-- СпасибА -->
-	<div class="popup js-popup-thx">
-		<div class="popup__bg js-tgl-thx"></div>
-	</div>
 
 	<!-- Описание вакансии -->
 	<div class="popup js-popup-vacancy">
