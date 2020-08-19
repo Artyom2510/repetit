@@ -404,6 +404,12 @@
 	align-items: center;
 	padding-bottom: 20px;
 
+	@include media(xs) {
+		flex-direction: column;
+		align-items: flex-start;
+		height: 84px;
+	}
+
 	&__label {
 		display: inline-flex;
 		align-items: center;
@@ -411,6 +417,11 @@
 		padding: 0;
 		outline: none !important;
 		cursor: pointer;
+
+		@include media(xs) {
+			margin-right: 0;
+			margin-bottom: 16px;
+		}
 
 		img {
 			display: inline-block;
@@ -459,6 +470,10 @@
 	display: none;
 	align-items: center;
 
+	@include media(xs) {
+		max-width: 100%;
+	}
+
 	&_display {
 		display: flex;
 	}
@@ -472,7 +487,7 @@
 
 	&__name {
 		display: inline-block;
-		max-width: 396px;
+		max-width: 272px;
 		font-size: 16px;
 		line-height: 21px;
 		color: $white;
@@ -492,21 +507,17 @@
 		background-color: transparent;
 
 		&:hover, &:focus {
-			svg {
-				path {
-					fill: $red;
-				}
+			img {
+				filter: none;
 			}
 		}
 
-		svg {
+		img {
 			display: inline-block;
 			width: 12px;
 			height: 12px;
-
-			path {
-				transition: fill .2s ease;
-			}
+			filter: grayscale(1000%);
+			transition: filter .2s ease;
 		}
 	}
 }
