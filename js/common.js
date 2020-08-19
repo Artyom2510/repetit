@@ -62,6 +62,7 @@ $(function () {
 			overflow: true,
 		});
 
+		// Костыль для скролла в сафари
 		popup.on('beforeOpen', function () {
 			$('.root').addClass('fixed');
 		});
