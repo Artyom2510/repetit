@@ -83,6 +83,8 @@ $(function () {
 			setTimeout(function () {
 				popupSendSignal.switchPopup('close');
 			}, 5000);
+		} else if (options.container === '#form-wrapper') {
+			$('input[type="tel"]').inputmask('+7 999 999 99 99');
 		}
 	});
 
@@ -116,14 +118,7 @@ $(function () {
 		}
 	});
 
-	// Маска для телефона
-	var tel = $('input[type="tel"]');
-	tel.inputmask('+7 999 999 99 99');
-
-	// if (tel.val().indexOf('_') === -1)
-
 	// Работа с формой
-	// var form = $('.js-form');
 
 	var formats = ['docx', 'doc', 'pdf'];
 	var maxFileSize = 3 * 1024 * 1024;
@@ -164,11 +159,9 @@ $(function () {
 				}
 				i++;
 			}
-			;
 
 			if (!isFormat) {
 				showError(errorTextFormat);
-				___
 				$('.js-submit').attr('disabled', 'true').addClass('btn_disabled');
 			} else if (size > maxFileSize || !size) {
 				showError(errorTextSize);
