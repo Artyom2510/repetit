@@ -298,9 +298,22 @@ $(function () {
 		});
 	}
 
-	var findReg = navigator.userAgent.match(/OS (\d[0-9])/gm);
-	if (findReg) {
-		if (findReg[0].match(/(1[0-9])/)[0] > 12) {
+
+	var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+		navigator.userAgent &&
+		navigator.userAgent.indexOf('CriOS') == -1 &&
+		navigator.userAgent.indexOf('FxiOS') == -1;
+
+		if (isSafari) {
+		var findReg = navigator.userAgent;
+		console.log(findReg)
+		var regex = /OS (\d?[0-9])/;
+		var matches = findReg.match(regex);
+		if (matches) {
+			if (matches[1] > 12) {
+				glithcBtn();
+			}
+		} else {
 			glithcBtn();
 		}
 	} else {
