@@ -71,6 +71,8 @@ $(function () {
 		});
 	}
 
+	var currentVacancy = '';
+
 	// Попап-Форма
 	var popupSendSignal = $('.js-popup-send-signal');
 	initPopup(popupSendSignal, 'js-tgl-signal');
@@ -93,6 +95,8 @@ $(function () {
 			}, 5000);
 		} else if (options.container === '#form-wrapper') {
 			$('input[type="tel"]').inputmask('+7 999 999 99 99');
+			$('.js-vacancy-input').val(currentVacancy);
+			currentVacancy = '';
 		}
 	});
 
@@ -148,7 +152,7 @@ $(function () {
 	}
 
 	// Ошибки для загружаемого фаила
-	var errorTextFormat = "Выберите файл с расширением pdf, doc";
+	var errorTextFormat = "Выберите файл с расширением doc";
 	var errorTextSize = "Файл более 3 Мб или пустой";
 
 	// Загрузка фаила
@@ -237,6 +241,7 @@ $(function () {
 
 	// Клик по кнопке, переход к  форме
 	$('.js-go-to-form').on('click', function () {
+		currentVacancy = popupVacancy.find('.popup__title').text();
 		popupVacancy.switchPopup('close');
 		popupSendSignal
 		.addClass('popup_with-arrow')
