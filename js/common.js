@@ -124,12 +124,10 @@ $(function () {
 
 	// Работа с формой
 	// var form = $('.js-form');
-	var errorUpload = $('.js-error-upload');
-	var upload = $('.js-upload');
-	var doc = $('.js-doc');
+
 	var formats = ['docx', 'doc', 'pdf'];
-	var submit = $('.js-submit');
 	var maxFileSize = 3 * 1024 * 1024;
+
 	var expansion;
 	var isFormat;
 	var value;
@@ -138,12 +136,12 @@ $(function () {
 
 	// Показ ошибки
 	function showError(ert) {
-		errorUpload.text(ert);
+		$('.js-error-upload').text(ert);
 	}
 
 	// Скрытие ошибки
 	function hideError() {
-		errorUpload.text("");
+		$('.js-error-upload').text("");
 	}
 
 	// Ошибки для загружаемого фаила
@@ -151,7 +149,7 @@ $(function () {
 	var errorTextSize = "Файл более 3 Мб или пустой";
 
 	// Загрузка фаила
-	upload.on('change', function () {
+	$(document).on('change', '.js-upload', function () {
 		isFormat = false;
 		file = $(this)[0].files[0];
 		if (!!file) {
@@ -171,17 +169,17 @@ $(function () {
 			if (!isFormat) {
 				showError(errorTextFormat);
 				___
-				submit.attr('disabled', 'true').addClass('btn_disabled');
+				$('.js-submit').attr('disabled', 'true').addClass('btn_disabled');
 			} else if (size > maxFileSize || !size) {
 				showError(errorTextSize);
-				submit.attr('disabled', 'true').addClass('btn_disabled');
+				$('.js-submit').attr('disabled', 'true').addClass('btn_disabled');
 			} else {
 				hideError();
 			}
-			if (!formfield.hasClass('formfield_error') && !errorUpload.text().length) {
-				submit.removeAttr('disabled').removeClass('btn_disabled');
+			if (!formfield.hasClass('formfield_error') && !$('.js-error-upload').text().length) {
+				$('.js-submit').removeAttr('disabled').removeClass('btn_disabled');
 			}
-			doc
+			$('.js-doc')
 			.addClass('doc_display')
 			.children('.doc__name').text(value);
 		}
@@ -193,18 +191,18 @@ $(function () {
 		.removeClass('formfield_error')
 		.children('.formfield__error').text("");
 		if (size && !formfield.hasClass('formfield_error')) {
-			submit.removeAttr('disabled').removeClass('btn_disabled');
+			$('.js-submit').removeAttr('disabled').removeClass('btn_disabled');
 		}
 	});
 
 	// Удаление файла
-	doc.children('.doc__del').on('click', function () {
+	$(document).on('click', '.js-doc .doc__del', function () {
 		showError(errorTextFormat);
-		submit.attr('disabled', 'true').addClass('btn_disabled');
+		$('.js-submit').attr('disabled', 'true').addClass('btn_disabled');
 		$(this).siblings('.doc__name').text("");
-		upload.val(null);
+		$('.js-upload').val(null);
 		size = 0;
-		doc.removeClass('doc_display');
+		$('.js-doc').removeClass('doc_display');
 	});
 
 	// попап с предложенной вакансией
