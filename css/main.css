@@ -2,19 +2,19 @@
 
 @font-face {
 	font-family: "PressStart2P";
-  src: url("/fonts/PressStart2P.ttf") format("truetype");
+  src: url("/repetit/fonts/PressStart2P.ttf") format("truetype");
   font-weight: 400;
 }
 
 @font-face {
 	font-family: "RobotoMono";
-  src: url("/fonts/RobotoMono.ttf") format("truetype");
+  src: url("/repetit/fonts/RobotoMono.ttf") format("truetype");
   font-weight: 500;
 }
 
 @font-face {
 	font-family: "RobotoMono-Regular";
-  src: url("/fonts/RobotoMono-Regular.ttf") format("truetype");
+  src: url("/repetit/fonts/RobotoMono-Regular.ttf") format("truetype");
   font-weight: 400;
 }
 
@@ -899,11 +899,11 @@ ul, ol {
 	}
 
 	21% {
-		text-shadow: 20px 1px 0 #F75245, -20px 1px 0 #44C7F1;
+		text-shadow: 20px -2px 0 #F75245, -20px 3px 0 #44C7F1;
 	}
 
 	22% {
-		text-shadow: 0 -1px 0 #F75245, 0 -1px 0 #44C7F1;
+		text-shadow: 0 1px 0 #F75245, 0 1px 0 #44C7F1;
 	}
 
 	43% {
@@ -991,43 +991,43 @@ ul, ol {
 	}
 
 	31% {
-		text-shadow: 20px -2px 0 #FFA800, -20px 5px 0 #44C7F1;
+		text-shadow: 20px 1px 0 #FFA800, -20px -3px 0 #44C7F1;
 	}
 
 	30% {
-		text-shadow: 20px -4px 0 #FFA800, -20px -3px 0 #44C7F1;
+		text-shadow: 20px 1px 0 #FFA800, -20px 5px 0 #44C7F1;
 	}
 
 	29% {
-		text-shadow: 20px -2px 0 #FFA800, -20px 3px 0 #44C7F1;
+		text-shadow: 20px 1px 0 #FFA800, -20px 2px 0 #44C7F1;
 	}
 
 	28% {
-		text-shadow: 20px 5px 0 #FFA800, -20px 1px 0 #44C7F1;
+		text-shadow: 20px 3px 0 #FFA800, -20px 0px 0 #44C7F1;
 	}
 
 	27% {
-		text-shadow: 20px 4px 0 #FFA800, -20px -4px 0 #44C7F1;
+		text-shadow: 20px 2px 0 #FFA800, -20px 1px 0 #44C7F1;
 	}
 
 	26% {
-		text-shadow: 20px -1px 0 #FFA800, -20px 0px 0 #44C7F1;
+		text-shadow: 20px -3px 0 #FFA800, -20px 0px 0 #44C7F1;
 	}
 
 	25% {
-		text-shadow: 20px 2px 0 #FFA800, -20px 2px 0 #44C7F1;
+		text-shadow: 20px 5px 0 #FFA800, -20px 4px 0 #44C7F1;
 	}
 
 	24% {
-		text-shadow: 20px -3px 0 #FFA800, -20px -4px 0 #44C7F1;
+		text-shadow: 20px 3px 0 #FFA800, -20px -2px 0 #44C7F1;
 	}
 
 	23% {
-		text-shadow: 20px -2px 0 #FFA800, -20px 1px 0 #44C7F1;
+		text-shadow: 20px -3px 0 #FFA800, -20px -2px 0 #44C7F1;
 	}
 
 	22% {
-		text-shadow: 0 -1px 0 #FFA800, 0 0px 0 #44C7F1;
+		text-shadow: 0 0px 0 #FFA800, 0 -1px 0 #44C7F1;
 	}
 
 	32% {
@@ -1047,11 +1047,11 @@ ul, ol {
 	}
 
 	35% {
-		text-shadow: 25px -4px 0 #FFA800, -25px 4px 0 #F75245;
+		text-shadow: 25px -3px 0 #FFA800, -25px 1px 0 #F75245;
 	}
 
 	36% {
-		text-shadow: 0 -3px 0 #FFA800, 0 0px 0 #F75245;
+		text-shadow: 0 2px 0 #FFA800, 0 1px 0 #F75245;
 	}
 
 	35% {
@@ -1095,7 +1095,7 @@ ul, ol {
 	}
 
 	40% {
-		text-shadow: 0 5px 0 #44C7F1, 0 1px 0 #F75245;
+		text-shadow: 0 4px 0 #44C7F1, 0 2px 0 #F75245;
 	}
 
 	40% {
@@ -1269,11 +1269,11 @@ ul, ol {
 	}
 
 	21% {
-		text-shadow: 20px 1px 0 #F75245, -20px 1px 0 #44C7F1;
+		text-shadow: 20px -2px 0 #F75245, -20px 3px 0 #44C7F1;
 	}
 
 	22% {
-		text-shadow: 0 -1px 0 #F75245, 0 -1px 0 #44C7F1;
+		text-shadow: 0 1px 0 #F75245, 0 1px 0 #44C7F1;
 	}
 
 	43% {
@@ -1361,43 +1361,43 @@ ul, ol {
 	}
 
 	31% {
-		text-shadow: 20px -2px 0 #FFA800, -20px 5px 0 #44C7F1;
+		text-shadow: 20px 1px 0 #FFA800, -20px -3px 0 #44C7F1;
 	}
 
 	30% {
-		text-shadow: 20px -4px 0 #FFA800, -20px -3px 0 #44C7F1;
+		text-shadow: 20px 1px 0 #FFA800, -20px 5px 0 #44C7F1;
 	}
 
 	29% {
-		text-shadow: 20px -2px 0 #FFA800, -20px 3px 0 #44C7F1;
+		text-shadow: 20px 1px 0 #FFA800, -20px 2px 0 #44C7F1;
 	}
 
 	28% {
-		text-shadow: 20px 5px 0 #FFA800, -20px 1px 0 #44C7F1;
+		text-shadow: 20px 3px 0 #FFA800, -20px 0px 0 #44C7F1;
 	}
 
 	27% {
-		text-shadow: 20px 4px 0 #FFA800, -20px -4px 0 #44C7F1;
+		text-shadow: 20px 2px 0 #FFA800, -20px 1px 0 #44C7F1;
 	}
 
 	26% {
-		text-shadow: 20px -1px 0 #FFA800, -20px 0px 0 #44C7F1;
+		text-shadow: 20px -3px 0 #FFA800, -20px 0px 0 #44C7F1;
 	}
 
 	25% {
-		text-shadow: 20px 2px 0 #FFA800, -20px 2px 0 #44C7F1;
+		text-shadow: 20px 5px 0 #FFA800, -20px 4px 0 #44C7F1;
 	}
 
 	24% {
-		text-shadow: 20px -3px 0 #FFA800, -20px -4px 0 #44C7F1;
+		text-shadow: 20px 3px 0 #FFA800, -20px -2px 0 #44C7F1;
 	}
 
 	23% {
-		text-shadow: 20px -2px 0 #FFA800, -20px 1px 0 #44C7F1;
+		text-shadow: 20px -3px 0 #FFA800, -20px -2px 0 #44C7F1;
 	}
 
 	22% {
-		text-shadow: 0 -1px 0 #FFA800, 0 0px 0 #44C7F1;
+		text-shadow: 0 0px 0 #FFA800, 0 -1px 0 #44C7F1;
 	}
 
 	32% {
@@ -1417,11 +1417,11 @@ ul, ol {
 	}
 
 	35% {
-		text-shadow: 25px -4px 0 #FFA800, -25px 4px 0 #F75245;
+		text-shadow: 25px -3px 0 #FFA800, -25px 1px 0 #F75245;
 	}
 
 	36% {
-		text-shadow: 0 -3px 0 #FFA800, 0 0px 0 #F75245;
+		text-shadow: 0 2px 0 #FFA800, 0 1px 0 #F75245;
 	}
 
 	35% {
@@ -1465,7 +1465,7 @@ ul, ol {
 	}
 
 	40% {
-		text-shadow: 0 5px 0 #44C7F1, 0 1px 0 #F75245;
+		text-shadow: 0 4px 0 #44C7F1, 0 2px 0 #F75245;
 	}
 
 	40% {
@@ -1496,13 +1496,7 @@ ul, ol {
 
 @media (max-width: 767.98px) {
 	.main {
-		padding-top: 5.55vh;
-		padding-bottom: 6.75vh;
-	}
-}
-
-@media (max-width: 374.98px) {
-	.main {
+		padding-top: 5vh;
 		padding-bottom: 5vh;
 	}
 }
@@ -1511,6 +1505,18 @@ ul, ol {
 	position: relative;
 	margin-bottom: 4.81vh;
 	text-align: center;
+}
+
+@media (max-width: 1279.98px) {
+	.main__title {
+		margin-bottom: 6.64vh;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.main__title {
+		margin-bottom: 4vh;
+	}
 }
 
 .main__title img {
@@ -1533,18 +1539,6 @@ ul, ol {
 	}
 }
 
-@media (max-width: 1279.98px) {
-	.main__title {
-		margin-bottom: 6.64vh;
-	}
-}
-
-@media (max-width: 767.98px) {
-	.main__title {
-		margin-bottom: 4.95vh;
-	}
-}
-
 .main__desc {
 	position: relative;
 	display: block;
@@ -1560,13 +1554,13 @@ ul, ol {
 
 @media (max-width: 1279.98px) {
 	.main__desc {
-		margin: 0 0 8.01vh;
+		margin-bottom: 8.01vh;
 	}
 }
 
 @media (max-width: 767.98px) {
 	.main__desc {
-		margin-bottom: 6.3vh;
+		margin-bottom: 5vh;
 	}
 }
 
@@ -1598,7 +1592,7 @@ ul, ol {
 	width: calc(100% - 4px);
 	height: -webkit-calc(100% - 4px);
 	height: calc(100% - 4px);
-	background: url("/icons/bg-marquee.svg") repeat 0 0 #FFA800;
+	background: url("/repetit/icons/bg-marquee.svg") repeat 0 0 #FFA800;
 }
 
 .main__btn {
@@ -1616,6 +1610,7 @@ ul, ol {
 @media (max-width: 767.98px) {
 	.main__btn {
 		margin-bottom: 7.35vh;
+		height: 48px;
 	}
 }
 
@@ -1946,7 +1941,7 @@ ul, ol {
 
 @media (max-width: 767.98px) {
 	.footer__list {
-		margin-bottom: 5.18vh;
+		margin-bottom: 2.7vh;
 	}
 
 	.footer__list.move:nth-of-type(2n + 1), .footer__list.move:nth-of-type(2n) {
@@ -1957,7 +1952,7 @@ ul, ol {
 
 @media (max-width: 374.98px) {
 	.footer__list {
-		margin-bottom: 4vh;
+		margin-bottom: 3.2vh;
 	}
 }
 
