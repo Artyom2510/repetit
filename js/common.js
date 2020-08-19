@@ -70,6 +70,12 @@ $(function () {
 			hideArrow();
 		});
 
+	$(document).on('pjax:success', function (e) {
+		setTimeout(function () {
+			popupSendSignal.switchPopup('close');
+		}, 5000);
+	});
+
 	// Функция, прячущая стрелочку
 	function hideArrow() {
 		popupSendSignal.removeClass('popup_with-arrow');
@@ -111,7 +117,7 @@ $(function () {
 	var errorUpload = $('.js-error-upload');
 	var upload = $('.js-upload');
 	var doc = $('.js-doc');
-	var formats = ['doc', 'pdf'];
+	var formats = ['docx', 'doc', 'pdf'];
 	var submit = $('.js-submit');
 	var maxFileSize = 3 * 1024 * 1024;
 	var expansion;
@@ -152,7 +158,7 @@ $(function () {
 			};
 
 			if (!isFormat) {
-				showError(errorTextFormat);
+				showError(errorTextFormat);___
 				submit.attr('disabled', 'true').addClass('btn_disabled');
 			} else if (size > maxFileSize || !size) {
 				showError(errorTextSize);
@@ -188,43 +194,6 @@ $(function () {
 		size = 0;
 		doc.removeClass('doc_display');
 	});
-
-	// Попап спасибо
-	var thx = $('.js-popup-thx');
-	initPopup(thx, 'js-tgl-thx');
-
-	// // Отправка формы
-	// form.on('submit', function(e) {
-	// 	e.preventDefault();
-	// 	var formData = new FormData($(this)[0]);
-	// 	if (size > maxFileSize || !size) {
-	// 		showError(errorTextFormat);
-	// 		submit.attr('disabled', 'true').addClass('btn_disabled');
-	// 	} else if (formfield.hasClass('formfield_error')) {
-	// 		submit.attr('disabled', 'true').addClass('btn_disabled');
-	// 	} else {
-	// 		$.ajax({
-	// 			url: form.attr('action'),
-	// 			data: formData,
-	// 			method: form.attr('method'),
-	// 			async: false,
-	// 			contentType: false,
-	// 			processData: false,
-	// 			success: function(data) {
-	// 				if (!data.success) {
-	// 					console.log(data.errors);
-	// 				} else {
-	// 					popupSendSignal.switchPopup('close');
-	// 					thx.switchPopup('open');
-	// 					setTimeout(function() {
-	// 						thx.switchPopup('close');
-	// 					}, 400);
-	// 				}
-	// 			}
-	// 		});
-	// 	}
-	// 	return false;
-	// });
 
 	// попап с предложенной вакансией
 	var popupVacancy = $('.js-popup-vacancy');
@@ -277,7 +246,7 @@ $(function () {
 		var turb = filter.querySelector('#filter feTurbulence');
 		var turbVal = { val: 0.000001 };
 		var turbValX = { val: 0.000001 };
-	
+
 		var glitchTimeline = function() {
 			var timeline = new TimelineMax({
 				repeat: -1,
@@ -287,7 +256,7 @@ $(function () {
 					turb.setAttribute('baseFrequency', turbVal.val + ' ' + turbValX.val);
 				}
 			});
-	
+
 			timeline
 				.to(turbValX, 0.1, { val: 0.5 })
 				.to(turbVal, 0.1, { val: 0.02 });
@@ -300,7 +269,7 @@ $(function () {
 			timeline
 				.set(turbValX, { val: 0.000001 })
 				.set(turbVal, { val: 0.000001 });
-	
+
 			// console.log("duration is: " + timeline.duration());
 			return {
 				start: function() {
@@ -311,10 +280,10 @@ $(function () {
 				}
 			};
 		};
-	
+
 		btnGlitch = new glitchTimeline();
 		btnGlitch.start();
-	
+
 		$('.js-btn-glitch').on({
 			mouseenter: function () {
 				$(this).removeClass('btn_hovered');
@@ -337,58 +306,4 @@ $(function () {
 	} else {
 		glithcBtn();
 	}
-
-
-	// Анимация по наведению на гречку
-	// var options = {
-	// 	template: Power0.easeNone,
-	// 	strength: 3,
-	// 	points: 120,
-	// 	taper: "none",
-	// 	randomize: true,
-	// 	clamp: false
-	// };
-	
-	// var duration = 15;
-	
-	// var origin = {
-	// 	left: 20,
-	// 	top: 20
-	// };
-	
-	// var opacityEase = RoughEase.ease.config(options);
-	// var widthEase = RoughEase.ease.config(options);
-	// var heightEase = RoughEase.ease.config(options);
-	// var originEase = RoughEase.ease.config(options);
-	
-	// new TimelineMax({
-	// 	yoyo: true,
-	// 	repeat: -1
-	// })
-	// 	.to('.grechka p', duration, {
-	// 		autoAlpha: .3,
-	// 		ease: opacityEase
-	// 	})
-	// 	.to('.grechka p', duration, {
-	// 		scaleX: 1.1,
-	// 		ease: widthEase
-	// 	}, 0)
-	// 	.to('.grechka p', duration, {
-	// 		scaleY: 1.1,
-	// 		ease: heightEase
-	// 	}, 0)
-	// 	.to(origin, duration, {
-	// 		left: 40,
-	// 		top: 40,
-	// 		roundProps: 'top, left',
-	// 		ease: originEase,
-	// 		onUpdate: updateOrigin
-	// 	}, 0);
-	
-	// function updateOrigin() {
-	// 	TweenLite.set('.grechka p', {
-	// 		transformOrigin: origin.left + '% ' + origin.top + '%'
-	// 	});
-	// }
-
 });
