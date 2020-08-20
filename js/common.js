@@ -89,18 +89,21 @@ $(function () {
 		});
 	});
 
+	var formfield;
+	var field;
+
 	$(document).on('pjax:success', function (e, data, status, xhr, options) {
 		if (options.container === '#ajax-form') {
 			setTimeout(function () {
 				popupSendSignal.switchPopup('close');
-			}, 5000);
+			}, 3000);
 		} else if (options.container === '#form-wrapper') {
 			$('input[type="tel"]').inputmask('+7 999 999 99 99');
 			$('.js-vacancy-input').val(currentVacancy);
 			currentVacancy = '';
 			// Добавление бордера на поля по наведению
-			var formfield = $('.js-formfield');
-			var field = $('.js-field');
+			formfield = $('.js-formfield');
+			field = $('.js-field');
 	
 			formfield.on({
 				'mouseenter': function () {
@@ -109,6 +112,15 @@ $(function () {
 				'mouseleave': function () {
 					if (!$(this).children(field).is(':focus')) {
 						$(this).removeClass('formfield_green');
+					}
+				},
+				// Удаляю ошибку по вводу в input
+				'input': function () {
+					$(this)
+					.removeClass('formfield_error')
+					.children('.formfield__error').text("");
+					if (!formfield.hasClass('formfield_error') && !$('.js-error-upload').text().length) {
+						$('.js-submit').removeAttr('disabled').removeClass('btn_disabled');
 					}
 				}
 			});
@@ -186,16 +198,6 @@ $(function () {
 			$('.js-doc')
 			.addClass('doc_display')
 			.children('.doc__name').text(value);
-		}
-	});
-
-	// Удаляю ошибку по вводу в input
-	formfield.on('input', function () {
-		$(this)
-		.removeClass('formfield_error')
-		.children('.formfield__error').text("");
-		if (!formfield.hasClass('formfield_error') && !$('.js-error-upload').text().length) {
-			$('.js-submit').removeAttr('disabled').removeClass('btn_disabled');
 		}
 	});
 
