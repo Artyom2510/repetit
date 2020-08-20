@@ -98,31 +98,30 @@ $(function () {
 			$('input[type="tel"]').inputmask('+7 999 999 99 99');
 			$('.js-vacancy-input').val(currentVacancy);
 			currentVacancy = '';
-		}
-
-		// Добавление бордера на поля по наведению
-		var formfield = $('.js-formfield');
-		var field = $('.js-field');
-
-		formfield.on({
-			'mouseenter': function () {
-				$(this).addClass('formfield_green');
-			},
-			'mouseleave': function () {
-				if (!$(this).children(field).is(':focus')) {
-					$(this).removeClass('formfield_green');
+			// Добавление бордера на поля по наведению
+			var formfield = $('.js-formfield');
+			var field = $('.js-field');
+	
+			formfield.on({
+				'mouseenter': function () {
+					$(this).addClass('formfield_green');
+				},
+				'mouseleave': function () {
+					if (!$(this).children(field).is(':focus')) {
+						$(this).removeClass('formfield_green');
+					}
 				}
-			}
-		});
-
-		field.on({
-			'focus': function () {
-				$(this).parent().addClass('formfield_green');
-			},
-			'blur': function () {
-				$(this).parent().removeClass('formfield_green');
-			}
-		});
+			});
+	
+			field.on({
+				'focus': function () {
+					$(this).parent().addClass('formfield_green');
+				},
+				'blur': function () {
+					$(this).parent().removeClass('formfield_green');
+				}
+			});
+		}
 	});
 
 	// Функция, прячущая стрелочку
