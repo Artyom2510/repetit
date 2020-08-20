@@ -99,36 +99,36 @@ $(function () {
 			$('.js-vacancy-input').val(currentVacancy);
 			currentVacancy = '';
 		}
+
+		// Добавление бордера на поля по наведению
+		var formfield = $('.js-formfield');
+		var field = $('.js-field');
+
+		formfield.on({
+			'mouseenter': function () {
+				$(this).addClass('formfield_green');
+			},
+			'mouseleave': function () {
+				if (!$(this).children(field).is(':focus')) {
+					$(this).removeClass('formfield_green');
+				}
+			}
+		});
+
+		field.on({
+			'focus': function () {
+				$(this).parent().addClass('formfield_green');
+			},
+			'blur': function () {
+				$(this).parent().removeClass('formfield_green');
+			}
+		});
 	});
 
 	// Функция, прячущая стрелочку
 	function hideArrow() {
 		popupSendSignal.removeClass('popup_with-arrow');
 	}
-
-	// Добавление бордера на поля по наведению
-	var formfield = $('.js-formfield');
-	var field = $('.js-field');
-
-	formfield.on({
-		'mouseenter': function () {
-			$(this).addClass('formfield_green');
-		},
-		'mouseleave': function () {
-			if (!$(this).children(field).is(':focus')) {
-				$(this).removeClass('formfield_green');
-			}
-		}
-	});
-
-	field.on({
-		'focus': function () {
-			$(this).parent().addClass('formfield_green');
-		},
-		'blur': function () {
-			$(this).parent().removeClass('formfield_green');
-		}
-	});
 
 	// Работа с формой
 
