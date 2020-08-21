@@ -103,6 +103,8 @@ window.addEventListener('load', function() {
 	var wW = window.innerWidth
 		|| document.documentElement.clientWidth
 		|| document.body.clientWidth;
+	
+	var getBoundingX;
 
 	// Функция рандома подсветки
 	function rndLight(el) {
@@ -113,6 +115,13 @@ window.addEventListener('load', function() {
 		}
 		rnd = Math.floor(Math.random() * child.length);
 		lightRnd = Math.floor(Math.random() * 4);
+		if (wW < 1280) {
+			getBoundingX = child[rnd].getBoundingClientRect().x;
+			while (getBoundingX < 0 || getBoundingX > wW) {
+				rnd = Math.floor(Math.random() * child.length);
+				getBoundingX = child[rnd].getBoundingClientRect().x;
+			}
+		}
 		child[rnd].style.setProperty('--color', colors[rnd]);
 		child[rnd].classList.add('light_' + lightRnd);
 	}

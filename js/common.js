@@ -93,12 +93,13 @@ $(function () {
 	var field;
 
 	$(document).on('pjax:success', function (e, data, status, xhr, options) {
-		if (options.container === '#ajax-form') {
+		if (options.container === '#ajax-form' && data.indexOf('js-form') === -1) {
+			dataLayer.push({'event': 'hr-page-lead'});
 			setTimeout(function () {
 				popupSendSignal.switchPopup('close');
 			}, 3000);
 		} else if (options.container === '#form-wrapper') {
-			$('input[type="tel"]').inputmask('+7 999 999 99 99');
+			$('input[type="tel"]').inputmask('9 999 999 99 99');
 			$('.js-vacancy-input').val(currentVacancy);
 			currentVacancy = '';
 			// Добавление бордера на поля по наведению
@@ -208,6 +209,9 @@ $(function () {
 		hideError();
 		size = 0;
 		$('.js-doc').removeClass('doc_display');
+		if (!formfield.hasClass('formfield_error') && !$('.js-error-upload').text().length) {
+			$('.js-submit').removeAttr('disabled').removeClass('btn_disabled');
+		}
 	});
 
 	// попап с предложенной вакансией
