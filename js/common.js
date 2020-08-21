@@ -72,8 +72,6 @@ $(function () {
 		});
 	}
 
-	var currentVacancy = '';
-
 	// Попап-Форма
 	var popupSendSignal = $('.js-popup-send-signal');
 	initPopup(popupSendSignal, 'js-tgl-signal');
@@ -91,6 +89,32 @@ $(function () {
 
 	var formfield;
 	var field;
+	// Кол-во цифр в поле
+	var amount = 13;
+
+	function fillInput(input) {
+		var value = input.val();
+		var length = value.length;
+		if (length) {
+			if (value[0].match(/[0-9]|\+/)) {
+				if (length > 1) {
+					if (length > amount) {
+						value = value.substr(0, amount);
+					}
+					var substrValue = value.substr(1);
+					var totalVal = value[0];
+					for (var i = 0; i < substrValue.length; i++) {
+						if (substrValue[i].match(/[0-9]/)) {
+							totalVal += substrValue[i];
+						}
+					}
+					input.val(totalVal);
+				}
+			} else {
+				input.val(value.substr(1));
+			}
+		}
+	}
 
 	$(document).on('pjax:success', function (e, data, status, xhr, options) {
 		if (options.container === '#ajax-form' && data.indexOf('js-form') === -1) {
@@ -99,9 +123,9 @@ $(function () {
 				popupSendSignal.switchPopup('close');
 			}, 3000);
 		} else if (options.container === '#form-wrapper') {
-			$('input[type="tel"]').inputmask('9 999 999 99 99');
-			$('.js-vacancy-input').val(currentVacancy);
-			currentVacancy = '';
+			$('.js-mask').on('input', function() {
+				fillInput($(this));
+			});
 			// Добавление бордера на поля по наведению
 			formfield = $('.js-formfield');
 			field = $('.js-field');
@@ -245,7 +269,6 @@ $(function () {
 
 	// Клик по кнопке, переход к  форме
 	$('.js-go-to-form').on('click', function () {
-		currentVacancy = popupVacancy.find('.popup__title').text();
 		popupVacancy.switchPopup('close');
 		popupSendSignal
 			.addClass('popup_with-arrow')
@@ -326,7 +349,6 @@ $(function () {
 
 	if (isSafari) {
 		var findReg = navigator.userAgent;
-		console.log(findReg)
 		var regex = /OS (\d?[0-9])/;
 		var matches = findReg.match(regex);
 		if (matches) {
