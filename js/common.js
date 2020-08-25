@@ -72,6 +72,8 @@ $(function () {
 		});
 	}
 
+	var currentVacancy = '';
+
 	// Попап-Форма
 	var popupSendSignal = $('.js-popup-send-signal');
 	initPopup(popupSendSignal, 'js-tgl-signal');
@@ -123,6 +125,8 @@ $(function () {
 				popupSendSignal.switchPopup('close');
 			}, 3000);
 		} else if (options.container === '#form-wrapper') {
+			$('.js-vacancy-input').val(currentVacancy);
+			currentVacancy = '';
 			$('.js-mask').on('input', function() {
 				fillInput($(this));
 			});
@@ -269,6 +273,7 @@ $(function () {
 
 	// Клик по кнопке, переход к  форме
 	$('.js-go-to-form').on('click', function () {
+		currentVacancy = popupVacancy.find('.popup__title').text();
 		popupVacancy.switchPopup('close');
 		popupSendSignal
 			.addClass('popup_with-arrow')
