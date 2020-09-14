@@ -79,10 +79,27 @@ window.addEventListener('load', function() {
 	}
 	executeFrame();
 
-	// document.querySelector('.btn-start').addEventListener('click', function() {
-	// 	warp = !warp;
-	// 	executeFrame();
-	// });
+	// // Ускорение работает 1 раз
+	var easterEgg2 = document.querySelector('.js-easter-egg2');
+	var click = 0;
+	function easterEgg2Click() {
+		if (click < 1) {
+			var easterEgg2This = this;
+			click++;
+			warp = !warp;
+			executeFrame();
+			setTimeout(function() {
+				warp = !warp;
+				executeFrame();
+				// Удалил клик
+				easterEgg2This.removeEventListener('click', easterEgg2Click);
+				easterEgg2This.style.pointerEvents = 'none';
+			}, 2500);
+		}
+	}
+
+	// Добавил клик
+	easterEgg2.addEventListener('click', easterEgg2Click);
 
 	// Настройка вспомогательных переменных, для сафари
 	function updateDeviceProps() {
@@ -128,6 +145,7 @@ window.addEventListener('load', function() {
 
 	// Функция возвращает ширину, добавляет анимацию для описания под заголовком
 	function marqueeWidth(el) {
+		el.style.width = 'auto';
 		var scW = el.scrollWidth + 36;
 		el.style.width = scW + 'px';
 		el.classList.add('marquee-anim');
@@ -150,16 +168,23 @@ window.addEventListener('load', function() {
 	// Вызов функций
 	marqueeWidth(marquee);
 
-	window.onresize = (function() {
-		wW = this.innerWidth;
+	setTimeout(function() {
+		marquee.innerText = 'Ты уже заинтересован, так чего же ты тормизишь, выбирай скорей, будь первым!';
+		marqueeWidth(marquee);
+	}, 90000);
+
+	function reuseMarqueeWidth() {
 		if (wW < 1280) {
 			marqueeWidth2(light);
 		}
+	}
+
+	window.onresize = (function() {
+		wW = this.innerWidth;
+		reuseMarqueeWidth();
 	});
 
-	if (wW < 1280) {
-		marqueeWidth2(light);
-	}
+	reuseMarqueeWidth()
 
 	light.forEach(function(el) {
 		rndLight(el);

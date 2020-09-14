@@ -48,10 +48,6 @@ $(function () {
 
 	imgSvg();
 
-	$('body').on('DOMNodeInserted', function () {
-		// imgSvg();
-	});
-
 	// Функция для инициализации попапов
 	function initPopup(popup, btn) {
 		popup.switchPopup({
@@ -271,7 +267,7 @@ $(function () {
 		});
 	});
 
-	// Клик по кнопке, переход к  форме
+	// Клик по кнопке, переход к форме
 	$('.js-go-to-form').on('click', function () {
 		currentVacancy = popupVacancy.find('.popup__title').text();
 		popupVacancy.switchPopup('close');
@@ -318,7 +314,6 @@ $(function () {
 			.set(turbValX, {val: 0.000001})
 			.set(turbVal, {val: 0.000001});
 
-			// console.log("duration is: " + timeline.duration());
 			return {
 				start: function () {
 					timeline.play(0);
@@ -346,7 +341,6 @@ $(function () {
 		});
 	}
 
-
 	var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
 		navigator.userAgent &&
 		navigator.userAgent.indexOf('CriOS') == -1 &&
@@ -366,4 +360,39 @@ $(function () {
 	} else {
 		glithcBtn();
 	}
+
+	// пасхалка-Поехали
+	$('.js-easter-egg-3').on({
+		'mouseenter': function () {
+			if ($(window).width() > 1279) {
+				$(this)
+					.children('.item__easter-egg')
+					.addClass('item__easter-egg_see');
+			}
+		},
+		'mouseleave': function () {
+			$(this)
+				.children('.item__easter-egg')
+				.removeClass('item__easter-egg_see');
+		}
+	});
+
+	//Клик по иконке
+	var cnt = 0;
+	$('.js-easter-egg').on('click', function() {
+		if (cnt < 2) {
+			if (cnt > 0) {
+				$(this)
+					.find('path:nth-child(4)')
+					.addClass('broken');
+				$(this).css('pointer-events', 'none');
+				$(this).unbind('click');
+			} else {
+				$(this)
+					.find('path:nth-child(2)')
+					.addClass('broken');
+			}
+			cnt++;
+		}
+	});
 });

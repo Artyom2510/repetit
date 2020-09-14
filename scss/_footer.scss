@@ -14,6 +14,10 @@
 		justify-content: center;
 		margin-bottom: 2.96vh;
 
+		&:nth-child(3) {
+			cursor: pointer;
+		}
+
 		@include media(md) {
 			--marquee-move: 0;
 			position: relative;
