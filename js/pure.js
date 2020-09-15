@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
 	var canvas = document.querySelector('.js-starts');
 	var c = canvas.getContext('2d');
 
-	var numStars = 1000;
+	var numStars = 500;
 	var radius = '0.'+Math.floor(Math.random() * 9) + 1;
 	var focalLength = canvas.width *2;
 	var warp = false;
