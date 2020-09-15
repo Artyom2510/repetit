@@ -8,21 +8,29 @@ window.addEventListener('load', function() {
 	var c = canvas.getContext('2d');
 
 	var numStars = 1000;
-	var focalLength = canvas.width * 2;
+	var radius = '0.'+Math.floor(Math.random() * 9) + 1;
+	var focalLength = canvas.width *2;
 	var warp = false;
 	var centerX;
 	var centerY;
 
-	var stars = [];
-	var star;
+	var stars = [], star;
 	var i;
+
+	initializeStars();
+
+	function executeFrame() {
+		requestAnimFrame(executeFrame);
+		moveStars();
+		drawStars();
+	}
 
 	function initializeStars() {
 		centerX = canvas.width / 2;
 		centerY = canvas.height / 2;
-		
+
 		stars = [];
-		for(i = 0; i < numStars; i++) {
+		for(i = 0; i < numStars; i++){
 			star = {
 				x: Math.random() * canvas.width,
 				y: Math.random() * canvas.height,
@@ -32,21 +40,22 @@ window.addEventListener('load', function() {
 			stars.push(star);
 		}
 	}
-	initializeStars();
 
 	function moveStars() {
-		for(i = 0; i < numStars; i++) {
+		for(i = 0; i < numStars; i++){
 			star = stars[i];
-			star.z -= 0.1;
-			
-			if (star.z < 0) {
+			star.z--;
+
+			if(star.z <= 0){
 				star.z = canvas.width;
 			}
 		}
 	}
 
 	function drawStars() {
-		var pixelX, pixelY, pixelRadius;
+		var pixelX;
+		var pixelY;
+		var pixelRadius;
 		
 		// Resize to the screen
 		if (canvas.width != window.innerWidth || canvas.height != window.innerHeight) {
@@ -55,34 +64,48 @@ window.addEventListener('load', function() {
 			initializeStars();
 		}
 		if (!warp) {
-			c.fillStyle = 'rgba(0, 10, 20, 1)';
-			c.fillRect(0, 0, canvas.width, canvas.height);
+			c.fillStyle = "rgba(0,10,20,1)";
+			c.fillRect(0,0, canvas.width, canvas.height);
 		}
+		c.fillStyle = "rgba(209, 255, 255, " + radius + ")";
 		for(i = 0; i < numStars; i++) {
 			star = stars[i];
-			
+
 			pixelX = (star.x - centerX) * (focalLength / star.z);
 			pixelX += centerX;
 			pixelY = (star.y - centerY) * (focalLength / star.z);
 			pixelY += centerY;
 			pixelRadius = 1 * (focalLength / star.z);
-			
+
 			c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
-			c.fillStyle = 'rgba(209, 255, 255, ' + star.o + ')';
+			c.fillStyle = "rgba(209, 255, 255, " + star.o + ")";
 		}
 	}
 
-	function executeFrame() {
-		requestAnimFrame(executeFrame);
-		moveStars();
-		drawStars();
-	}
 	executeFrame();
 
-	// document.querySelector('.btn-start').addEventListener('click', function() {
-	// 	warp = !warp;
-	// 	executeFrame();
-	// });
+	// Ускорение работает 1 раз
+	var easterEgg2 = document.querySelector('.js-easter-egg2');
+	var click = 0;
+	function easterEgg2Click() {
+		if (click < 1) {
+			var easterEgg2This = this;
+			click++;
+			warp = !warp;
+			c.clearRect(0, 0, canvas.width, canvas.height);
+			executeFrame();
+			setTimeout(function() {
+				warp = !warp;
+				executeFrame();
+				// Удалил клик
+				easterEgg2This.removeEventListener('click', easterEgg2Click);
+				easterEgg2This.style.pointerEvents = 'none';
+			}, 4000);
+		}
+	}
+
+	// Добавил клик
+	easterEgg2.addEventListener('click', easterEgg2Click);
 
 	// Настройка вспомогательных переменных, для сафари
 	function updateDeviceProps() {
@@ -128,6 +151,7 @@ window.addEventListener('load', function() {
 
 	// Функция возвращает ширину, добавляет анимацию для описания под заголовком
 	function marqueeWidth(el) {
+		el.style.width = 'auto';
 		var scW = el.scrollWidth + 36;
 		el.style.width = scW + 'px';
 		el.classList.add('marquee-anim');
@@ -150,21 +174,40 @@ window.addEventListener('load', function() {
 	// Вызов функций
 	marqueeWidth(marquee);
 
-	window.onresize = (function() {
-		wW = this.innerWidth;
+	setTimeout(function() {
+		marquee.innerText = 'Ты уже заинтересован, так чего же ты тормизишь, выбирай скорей, будь первым!';
+		marqueeWidth(marquee);
+	}, 90000);
+
+	function reuseMarqueeWidth() {
 		if (wW < 1280) {
 			marqueeWidth2(light);
 		}
+	}
+
+	window.onresize = (function() {
+		wW = this.innerWidth;
+		reuseMarqueeWidth();
 	});
 
-	if (wW < 1280) {
-		marqueeWidth2(light);
-	}
+	reuseMarqueeWidth()
 
 	light.forEach(function(el) {
 		rndLight(el);
 		setInterval(function() {
 			rndLight(el);
 		}, 4800);
+	});
+
+	// пасхалка-Поехали
+	var easterEgg3 = document.querySelector('.main-cards__easter-egg');
+	document.querySelector('.js-easter-egg-3').addEventListener('click',function () {
+		easterEgg3.classList.add('main-cards__easter-egg_see');
+		$(this).css('pointer-events', 'none');
+	});
+
+	document.querySelector('.cards').addEventListener('scroll', function() {
+		var x = document.querySelector('.js-bounding').getBoundingClientRect().left;
+		easterEgg3.style.left = x + 'px';
 	});
 });

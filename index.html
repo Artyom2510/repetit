@@ -31,11 +31,10 @@
 	<!-- End Google Tag Manager -->
 
 	<script src="js/libs/jquery-3.4.1.min.js"></script>
-	<script src="js/libs/jquery.switchPopup.js"></script>
-	<script src="js/libs/jquery.inputmask.bundle.min.js"></script>
+	<script src="js/libs/jquery.switchPopup.min.js"></script>
 	<script src="js/libs/tween-max.min.js"></script>
-	<script src="js/common.js"></script>
-	<script src="js/pure.js"></script>
+	<script src="js/common.min.js"></script>
+	<script src="js/pure.min.js"></script>
 
 </head>
 
@@ -51,7 +50,6 @@
 	<div class="root">
 		<!-- Звёзды )) -->
 		<canvas class="root__canvas-stars js-starts"></canvas>
-		<!-- <button class="btn-start"></button> -->
 
 		<main class="main">
 			<div class="main__title">
@@ -62,7 +60,6 @@
 				<p>Всем. Всем. Всем. Всем, кто поймал сигнал. Мы ищем! Единомышленников, коллег, партнеров. Мы строим! Свою
 					edtech компанию. Как вам такая задачка? Вам нравится такая задачка? Какие эмоции вызывает у вас такая
 					задачка? Вы готовы вместе с нами ломать голову над решением такой задачки? Мы ждем ваш сигнал.</p>
-				<span></span>
 			</div>
 			<button class="main__btn btn js-btn-glitch js-tgl-signal">
 				<span class="btn__rectangle"></span>
@@ -71,57 +68,55 @@
 				<span class="btn__rectangle"></span>
 				<span class="btn__text">Послать сигнал</span>
 			</button>
-			<!-- <button class="main__btn btn js-tgl-signal">
-				<span class="btn__text">Послать сигнал</span>
-			</button> -->
-			<div class="main__cards">
+			<div class="main__cards main-cards">
+				<h3 class="main-cards__easter-egg">поехали!</h3>
 				<ul class="cards">
-					<li class="cards__item">
-						<button class="card js-query" data-query="/">
-							<img src="icons/cards/job1.svg" alt="" class="card__prev">
-							<span class="card__prof">Руководитель отдела Директ / Ads</span>
+					<li class="cards__item item js-bounding">
+						<img src="icons/cards/job1.svg" alt="" class="item__prev item__prev_svg js-easter-egg-3">
+						<button class="item__card card js-query" data-query="/">
+							Руководитель отдела Директ / Ads
 						</button>
 					</li>
-					<li class="cards__item">
-						<button class="card js-query" data-query="/">
-							<img src="icons/cards/job2.svg" alt="" class="card__prev">
-							<span class="card__prof">Специалист по контекстной рекламе</span>
+					<li class="cards__item item">
+						<img src="icons/cards/job2.svg" alt="" class="item__prev">
+						<button class="item__card card js-query" data-query="/">
+							Специалист по контекстной рекламе
 						</button>
 					</li>
-					<li class="cards__item">
-						<button class="card js-query" data-query="/">
-							<img src="icons/cards/job3.svg" alt="" class="card__prev">
-							<span class="card__prof">Менеджер по продукту</span>
+					<li class="cards__item item">
+						<img src="icons/cards/job3.svg" alt="" class="item__prev">
+						<button class="item__card card js-query" data-query="/">
+							Менеджер по продукту
 						</button>
 					</li>
-					<li class="cards__item">
-						<button class="card js-query" data-query="/">
-							<img src="icons/cards/job4.svg" alt="" class="card__prev">
-							<span class="card__prof">Продуктовый / маркетинговый аналитик</span>
+					<li class="cards__item item">
+						<img src="icons/cards/job4.svg" alt="" class="item__prev">
+						<button class="item__card card js-query" data-query="/">
+							Продуктовый / маркетинговый аналитик
 						</button>
 					</li>
-					<li class="cards__item">
-						<button class="card js-query" data-query="/">
-							<img src="icons/cards/job5.svg" alt="" class="card__prev">
-							<span class="card__prof">Маркетолог онлайн-продукта</span>
+					<li class="cards__item item">
+						<img src="icons/cards/job5.svg" alt="" class="item__prev">
+						<button class="item__card card js-query" data-query="/">
+							Маркетолог онлайн-продукта
 						</button>
 					</li>
-					<li class="cards__item">
-						<button class="card js-query" data-query="/">
-							<img src="icons/cards/job6.svg" alt="" class="card__prev">
-							<span class="card__prof">Тестировщик</span>
+					<li class="cards__item item">
+						<img src="icons/cards/job6.svg" alt="" class="item__prev item__prev_svg img-svg js-easter-egg">
+						<button class="item__card card card_broken js-query" data-query="/">
+							Тестировщик
 						</button>
 					</li>
-					<li class="cards__item">
-						<button class="card js-query" data-query="/">
-							<img src="icons/cards/job7.svg" alt="" class="card__prev">
-							<span class="card__prof">Бэк-эндер</span>
+					<li class="cards__item item">
+						<img src="icons/cards/job7.svg" alt="" class="item__prev">
+						<button class="item__card card js-query js-tgl-canvas" data-query="/">
+							Бэк-эндер
 						</button>
 					</li>
-					<li class="cards__item">
-						<button class="card js-query" data-query="/">
-							<img src="icons/cards/job8.svg" alt="" class="card__prev">
-							<span class="card__prof">Фронт-эндер</span>
+					<li class="cards__item item">
+						<img src="icons/cards/job8.svg" alt="" class="item__prev">
+						<button class="item__card card js-query" data-query="/">
+							Фронт-эндер
 						</button>
 					</li>
 				</ul>
@@ -143,7 +138,7 @@
 				<li>Не важен разрез глаз</li>
 				<li>Не важен цвет кожи</li>
 			</ul>
-			<ul class="footer__list js-light-marquee">
+			<ul class="footer__list js-light-marquee js-easter-egg2">
 				<li>Важна проактивность</li>
 				<li>Важна критичность ума</li>
 				<li>Важны результаты</li>

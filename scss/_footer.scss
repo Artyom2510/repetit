@@ -14,6 +14,10 @@
 		justify-content: center;
 		margin-bottom: 2.96vh;
 
+		&:nth-child(3) {
+			cursor: pointer;
+		}
+
 		@include media(md) {
 			--marquee-move: 0;
 			position: relative;
@@ -24,11 +28,11 @@
 			margin-bottom: 4.5vh;
 
 			&.move {
-				&:nth-of-type(2n + 1) {
+				&:nth-child(2n + 1) {
 					animation: move-1 10s linear infinite alternate;
 				}
 	
-				&:nth-of-type(2n) {
+				&:nth-child(2n) {
 					animation: move-2 10s linear infinite alternate;
 				}
 			}
@@ -38,8 +42,8 @@
 			margin-bottom: 5.18vh;
 
 			&.move {
-				&:nth-of-type(2n + 1),
-				&:nth-of-type(2n) {
+				&:nth-child(2n + 1),
+				&:nth-child(2n) {
 					animation-duration: 20s;
 				}
 			}
@@ -49,8 +53,8 @@
 			margin-bottom: 2.7vh;
 
 			&.move {
-				&:nth-of-type(2n + 1),
-				&:nth-of-type(2n) {
+				&:nth-child(2n + 1),
+				&:nth-child(2n) {
 					animation-duration: 40s;
 				}
 			}
