@@ -247,6 +247,11 @@ $(function () {
 	// Запрос по клику на карточку, открытие попапа-вакансия
 	$('.js-query').on('click', function () {
 		query = $(this).data('query');
+		if ($(this).parent().hasClass('js-bounding')) {
+			// Спрятать - Поехали
+			$('.main-cards__easter-egg').removeClass('main-cards__easter-egg_see');
+			$('.js-easter-egg-3').css('pointer-events', 'all');
+		}
 
 		$.ajax({
 			url: query,
@@ -360,22 +365,6 @@ $(function () {
 	} else {
 		glithcBtn();
 	}
-
-	// пасхалка-Поехали
-	$('.js-easter-egg-3').on({
-		'mouseenter': function () {
-			if ($(window).width() > 1279) {
-				$(this)
-					.children('.item__easter-egg')
-					.addClass('item__easter-egg_see');
-			}
-		},
-		'mouseleave': function () {
-			$(this)
-				.children('.item__easter-egg')
-				.removeClass('item__easter-egg_see');
-		}
-	});
 
 	//Клик по иконке
 	var cnt = 0;
