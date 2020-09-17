@@ -244,6 +244,7 @@ $(function () {
 
 	var query;
 	var dataBlock = $('.js-content-wraper');
+	var cntClick = 0;
 	// Запрос по клику на карточку, открытие попапа-вакансия
 	$('.js-query').on('click', function () {
 		query = $(this).data('query');
@@ -253,23 +254,40 @@ $(function () {
 			$('.js-easter-egg-3').css('pointer-events', 'all');
 		}
 
-		$.ajax({
-			url: query,
-			method: 'POST',
-			async: false,
-			contentType: false,
-			processData: false,
-			success: function (data) {
-				if (!data.success) {
-					console.log(data.errors);
-				} else {
-					// функция подменяющая контент
-					dataBlock.html(data.data);
-					// Открытие попапа
-					popupVacancy.switchPopup('open');
+		if (!$(this).hasClass('card_broken')) {
+			$.ajax({
+				url: query,
+				method: 'POST',
+				async: false,
+				contentType: false,
+				processData: false,
+				success: function (data) {
+					if (!data.success) {
+						console.log(data.errors);
+					} else {
+						// функция подменяющая контент
+						dataBlock.html(data.data);
+						// Открытие попапа
+						popupVacancy.switchPopup('open');
+					}
 				}
+			});
+		} else {
+			if (cntClick > 0) {
+				$(this)
+					.siblings('.item__prev')
+					.find('path:nth-child(4)')
+					.addClass('broken');
+				$(this).removeClass('card_broken');
+			} else {
+				$(this)
+					.siblings('.item__prev')
+					.find('path:nth-child(2)')
+					.addClass('broken');
 			}
-		});
+			cntClick++;
+		}
+
 	});
 
 	// Клик по кнопке, переход к форме
@@ -365,23 +383,4 @@ $(function () {
 	} else {
 		glithcBtn();
 	}
-
-	//Клик по иконке
-	var cnt = 0;
-	$('.js-easter-egg').on('click', function() {
-		if (cnt < 2) {
-			if (cnt > 0) {
-				$(this)
-					.find('path:nth-child(4)')
-					.addClass('broken');
-				$(this).css('pointer-events', 'none');
-				$(this).unbind('click');
-			} else {
-				$(this)
-					.find('path:nth-child(2)')
-					.addClass('broken');
-			}
-			cnt++;
-		}
-	});
 });

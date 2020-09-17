@@ -277,7 +277,6 @@
 		pointer-events: none;
 
 		&_svg {
-			pointer-events: all;
 			cursor: pointer;
 			overflow: visible;
 			path:nth-child(2),
@@ -298,6 +297,10 @@
 					animation: broken-click2 1.5s ease-in-out forwards;
 				}
 			}
+		}
+
+		&_easter-egg {
+			pointer-events: all;
 		}
 	}
 }

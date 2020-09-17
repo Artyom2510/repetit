@@ -8,9 +8,11 @@ var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var snippets = require('sass-snippets');
+var del = require('del');
 
 var watchSassFiles = 'scss/**/*.+(sass|scss)';
 var watchJsFiles = ['js/**/*.js', '!js/libs/*.js'];
+var delJsFiles = ['js/**/*min.js', '!js/libs/*.js'];
 var watchHtmlFiles = '**/*.html';
 
 // Browser Synk
@@ -42,6 +44,11 @@ gulp.task('watch', ['dev-sass', 'dev-js', 'browser-sync'], function() {
 	gulp.watch(watchHtmlFiles, browserSync.reload);
 });
 
+// Удаление минифицированного джса
+gulp.task('clean', function() {
+	return del.sync(delJsFiles);
+});
+
 // Сжатие js
 gulp.task('build-js', function() {
 	return gulp.src(watchJsFiles)
@@ -63,5 +70,5 @@ gulp.task('build-sass', function() {
 });
 
 // Компиляция
-gulp.task('build', ['build-sass', 'build-js']);
+gulp.task('build', ['clean', 'build-sass', 'build-js']);
 gulp.task('default', ['watch']);
