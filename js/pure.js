@@ -87,20 +87,26 @@ window.addEventListener('load', function() {
 	// Ускорение работает 1 раз
 	var easterEgg2 = document.querySelector('.js-easter-egg2');
 	var click = 0;
+	var flagClick = true;
 	function easterEgg2Click() {
-		if (click < 1) {
-			var easterEgg2This = this;
+		if (flagClick) {
 			click++;
+			flagClick = !flagClick;
 			warp = !warp;
 			c.clearRect(0, 0, canvas.width, canvas.height);
 			executeFrame();
 			setTimeout(function() {
 				warp = !warp;
+				c.clearRect(0, 0, canvas.width, canvas.height);
 				executeFrame();
+				flagClick = !flagClick;
 				// Удалил клик
-				easterEgg2This.removeEventListener('click', easterEgg2Click);
-				easterEgg2This.style.pointerEvents = 'none';
 			}, 4000);
+		}
+		if (click === 4) {
+			// var easterEgg2This = this;
+			this.removeEventListener('click', easterEgg2Click);
+			this.style.pointerEvents = 'none';
 		}
 	}
 
