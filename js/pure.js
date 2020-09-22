@@ -181,8 +181,9 @@ window.addEventListener('load', function() {
 	marqueeWidth(marquee);
 
 	setTimeout(function() {
-		marquee.innerText = 'Ты уже заинтересован, так чего же ты тормизишь, выбирай скорей, будь первым!';
+		marquee.innerText = 'Дружище! Текст уже уехал, а ты все еще здесь. Может пора уже нажать куда-нибудь. Вот тебе подсказка - нажми на космонавта. А слышал анекдот? - Василий Иванович! Анку током убило! - Как это произошло? - Да вот аккумулятор на голову упал... ¡Esto es lo mucho que debes estar confundido para tener tiempo de copiar este texto, pegarlo en un traductor de Google y darte cuenta de que eres una persona especial única! ¡Sí, estás tan solo! No hay más en el mundo. •−− •− ••• •• •−•• •• •−−− •• •−− •− −• −−− •−− •• −−−• •−•−•− −••• • •−•• −•−− • •−− •−•• • ••• ••− −−••−− −−− − ••• − •− −• −••− •−−• • − −••− −•− •− •−•−•− −• • −•• −−− −−• •−• •• −••• −−− •−− −− −• • ••• • •−−− −−−• •− ••• −−••−−';
 		marqueeWidth(marquee);
+		marquee.classList.add('marquee-anim_more-time');
 	}, 90000);
 
 	function reuseMarqueeWidth() {
