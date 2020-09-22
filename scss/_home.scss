@@ -83,6 +83,10 @@
 
 			&.marquee-anim {
 				animation: marquee 45s infinite linear;
+
+				&_more-time {
+					animation-duration: 90s;
+				}
 			}
 		}
 	}
